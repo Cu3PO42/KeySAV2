@@ -764,6 +764,7 @@ namespace KeySAV2
             string ev_sa = data.SPA_EV.ToString();
             string ev_sd = data.SPD_EV.ToString();
             string ev_se = data.SPE_EV.ToString();
+            string exp = data.exp.ToString();
 
             // Bonus
             string relearn1 = movelist[data.eggmove1].ToString();
@@ -837,8 +838,8 @@ namespace KeySAV2
 
                 if (CB_ExportStyle.SelectedIndex == 6)
                 {
-                    csvdata += String.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23},{24},{25},{26},{27},{28},{29},{30},{31},{32},{33},{34},{35}\r\n",
-                        box, slot, species, gender, nature, ability, hp, atk, def, spa, spd, spe, hptype, ESV, TSV, nickname, otname, ball, TID, SID, ev_hp, ev_at, ev_de, ev_sa, ev_sd, ev_se, move1, move2, move3, move4, relearn1, relearn2, relearn3, relearn4, isshiny, isegg);
+                    csvdata += String.Format("{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23},{24},{25},{26},{27},{28},{29},{30},{31},{32},{33},{34},{35},{36}\r\n",
+                        box, slot, species, gender, nature, ability, hp, atk, def, spa, spd, spe, hptype, ESV, TSV, nickname, otname, ball, TID, SID, ev_hp, ev_at, ev_de, ev_sa, ev_sd, ev_se, move1, move2, move3, move4, relearn1, relearn2, relearn3, relearn4, isshiny, isegg, exp);
                 }
                 if (CB_ExportStyle.SelectedIndex == 7)
                 {
@@ -868,7 +869,7 @@ namespace KeySAV2
         }
         private void DumpSAV(object sender, EventArgs e)
         {
-            csvheader = "Box,Row,Column,Species,Gender,Nature,Ability,HP IV,ATK IV,DEF IV,SPA IV,SPD IV,SPE IV,HP Type,ESV,TSV,Nickname,OT,Ball,TID,SID,HP EV,ATK EV,DEF EV,SPA EV,SPD EV,SPE EV,Move 1,Move 2,Move 3,Move 4,Relearn 1, Relearn 2, Relearn 3, Relearn 4, Shiny, Egg";
+            csvheader = "Box,Row,Column,Species,Gender,Nature,Ability,HP IV,ATK IV,DEF IV,SPA IV,SPD IV,SPE IV,HP Type,ESV,TSV,Nickname,OT,Ball,TID,SID,HP EV,ATK EV,DEF EV,SPA EV,SPD EV,SPE EV,Move 1,Move 2,Move 3,Move 4,Relearn 1,Relearn 2,Relearn 3,Relearn 4,Shiny,Egg,Experience";
             csvdata = csvheader + "\r\n";
             RTB_SAV.Clear();
             dumpedcounter = 0;
