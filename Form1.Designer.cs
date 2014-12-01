@@ -82,6 +82,8 @@
             this.CHK_Split = new System.Windows.Forms.CheckBox();
             this.CHK_BoldIVs = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.TB_File3 = new System.Windows.Forms.TextBox();
+            this.B_File3 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.B_BreakFolder = new System.Windows.Forms.Button();
             this.TB_Folder = new System.Windows.Forms.TextBox();
@@ -99,8 +101,8 @@
             this.RTB_OPTIONS = new System.Windows.Forms.RichTextBox();
             this.CB_MainLanguage = new System.Windows.Forms.ComboBox();
             this.CB_Game = new System.Windows.Forms.ComboBox();
-            this.B_File3 = new System.Windows.Forms.Button();
-            this.TB_File3 = new System.Windows.Forms.TextBox();
+            this.L_Gender_Filter = new System.Windows.Forms.Label();
+            this.CB_Gender_Filter = new System.Windows.Forms.ComboBox();
             this.tab_Main.SuspendLayout();
             this.Tab_BV.SuspendLayout();
             this.Tab_SAV.SuspendLayout();
@@ -252,6 +254,9 @@
             // 
             // GB_Filter
             // 
+            this.GB_Filter.Controls.Add(this.L_HP_Type);
+            this.GB_Filter.Controls.Add(this.L_Gender_Filter);
+            this.GB_Filter.Controls.Add(this.CB_Gender_Filter);
             this.GB_Filter.Controls.Add(this.CHK_Egg);
             this.GB_Filter.Controls.Add(this.CHK_IV_Spe);
             this.GB_Filter.Controls.Add(this.CHK_IV_SpDef);
@@ -269,13 +274,12 @@
             this.GB_Filter.Controls.Add(this.CHK_Trickroom);
             this.GB_Filter.Controls.Add(this.CB_No_IVs);
             this.GB_Filter.Controls.Add(this.L_No_IVs);
-            this.GB_Filter.Controls.Add(this.L_HP_Type);
             this.GB_Filter.Controls.Add(this.CB_HP_Type);
             this.GB_Filter.Controls.Add(this.CHK_Enable_Filtering);
             this.GB_Filter.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.GB_Filter.Location = new System.Drawing.Point(3, 77);
             this.GB_Filter.Name = "GB_Filter";
-            this.GB_Filter.Size = new System.Drawing.Size(316, 166);
+            this.GB_Filter.Size = new System.Drawing.Size(316, 198);
             this.GB_Filter.TabIndex = 31;
             this.GB_Filter.TabStop = false;
             this.GB_Filter.Text = "Filtering";
@@ -614,10 +618,10 @@
             this.RTB_SAV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.RTB_SAV.Location = new System.Drawing.Point(0, 249);
+            this.RTB_SAV.Location = new System.Drawing.Point(0, 281);
             this.RTB_SAV.Name = "RTB_SAV";
             this.RTB_SAV.ReadOnly = true;
-            this.RTB_SAV.Size = new System.Drawing.Size(320, 170);
+            this.RTB_SAV.Size = new System.Drawing.Size(320, 138);
             this.RTB_SAV.TabIndex = 30;
             this.RTB_SAV.Text = "";
             this.RTB_SAV.WordWrap = false;
@@ -792,6 +796,26 @@
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Breaker";
+            // 
+            // TB_File3
+            // 
+            this.TB_File3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.TB_File3.Location = new System.Drawing.Point(85, 101);
+            this.TB_File3.Name = "TB_File3";
+            this.TB_File3.ReadOnly = true;
+            this.TB_File3.Size = new System.Drawing.Size(229, 20);
+            this.TB_File3.TabIndex = 34;
+            // 
+            // B_File3
+            // 
+            this.B_File3.Location = new System.Drawing.Point(5, 100);
+            this.B_File3.Name = "B_File3";
+            this.B_File3.Size = new System.Drawing.Size(75, 23);
+            this.B_File3.TabIndex = 33;
+            this.B_File3.Text = "File 3";
+            this.B_File3.UseVisualStyleBackColor = true;
+            this.B_File3.Click += new System.EventHandler(this.loadBreak3);
             // 
             // label2
             // 
@@ -991,25 +1015,29 @@
             this.CB_Game.TabIndex = 2;
             this.CB_Game.SelectedIndexChanged += new System.EventHandler(this.changedetectgame);
             // 
-            // B_File3
+            // L_Gender_Filter
             // 
-            this.B_File3.Location = new System.Drawing.Point(5, 100);
-            this.B_File3.Name = "B_File3";
-            this.B_File3.Size = new System.Drawing.Size(75, 23);
-            this.B_File3.TabIndex = 33;
-            this.B_File3.Text = "File 3";
-            this.B_File3.UseVisualStyleBackColor = true;
-            this.B_File3.Click += new System.EventHandler(this.loadBreak3);
+            this.L_Gender_Filter.AutoSize = true;
+            this.L_Gender_Filter.Location = new System.Drawing.Point(49, 174);
+            this.L_Gender_Filter.Name = "L_Gender_Filter";
+            this.L_Gender_Filter.Size = new System.Drawing.Size(42, 13);
+            this.L_Gender_Filter.TabIndex = 23;
+            this.L_Gender_Filter.Text = "Gender";
             // 
-            // TB_File3
+            // CB_Gender_Filter
             // 
-            this.TB_File3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TB_File3.Location = new System.Drawing.Point(85, 101);
-            this.TB_File3.Name = "TB_File3";
-            this.TB_File3.ReadOnly = true;
-            this.TB_File3.Size = new System.Drawing.Size(229, 20);
-            this.TB_File3.TabIndex = 34;
+            this.CB_Gender_Filter.BackColor = System.Drawing.SystemColors.Window;
+            this.CB_Gender_Filter.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CB_Gender_Filter.FormattingEnabled = true;
+            this.CB_Gender_Filter.Items.AddRange(new object[] {
+            "Any",
+            "♂",
+            "♀",
+            "⚪"});
+            this.CB_Gender_Filter.Location = new System.Drawing.Point(93, 171);
+            this.CB_Gender_Filter.Name = "CB_Gender_Filter";
+            this.CB_Gender_Filter.Size = new System.Drawing.Size(32, 21);
+            this.CB_Gender_Filter.TabIndex = 22;
             // 
             // Form1
             // 
@@ -1115,6 +1143,8 @@
         private System.Windows.Forms.CheckBox CHK_Egg;
         private System.Windows.Forms.TextBox TB_File3;
         private System.Windows.Forms.Button B_File3;
+        private System.Windows.Forms.Label L_Gender_Filter;
+        private System.Windows.Forms.ComboBox CB_Gender_Filter;
 
     }
 }

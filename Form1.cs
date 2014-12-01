@@ -785,6 +785,12 @@ namespace KeySAV2
                     checkHp = true;
                 }
 
+                if (CB_Gender_Filter.SelectedIndex > 0)
+                {
+                    // Subtract 1 because on the gender flag 0 is male but on the list 1 is male etc
+                    if (CB_Gender_Filter.SelectedIndex - 1 != data.genderflag) { statisfiesFilters = false; break; }
+                }
+
                 int perfects = Convert.ToInt16(CB_No_IVs.SelectedItem);
                 bool ivsSelected = CHK_IV_HP.Checked || CHK_IV_Atk.Checked || CHK_IV_Def.Checked || CHK_IV_SpAtk.Checked || CHK_IV_SpDef.Checked || CHK_IV_Spe.Checked;
                 if (hp == "31" ||checkHp && hp == "30") --perfects;
