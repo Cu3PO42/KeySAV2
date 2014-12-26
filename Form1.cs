@@ -1743,23 +1743,6 @@ namespace KeySAV2
                 MessageBox.Show(result + "Keystreams were NOT bruteforced!\n\nStart over and try again :(");
         }
 
-        // Utility
-        private byte[] xortwos(byte[] arr1, byte[] arr2)
-        {
-            if (arr1.Length != arr2.Length) return null;
-            byte[] arr3 = new Byte[arr1.Length];
-            for (int i = 0; i < arr1.Length; i++)
-                arr3[i] = (byte)(arr1[i] ^ arr2[i]);
-            return arr3;
-        }
-        public static string TrimFromZero(string input)
-        {
-            int index = input.IndexOf('\0');
-            if (index < 0)
-                return input;
-
-            return input.Substring(0, index);
-        }
         private static string CleanFileName(string fileName)
         {
             return Path.GetInvalidFileNameChars().Aggregate(fileName, (current, c) => current.Replace(c.ToString(), string.Empty));
