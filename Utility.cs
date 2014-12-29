@@ -69,6 +69,14 @@ namespace KeySAV2
             return true;
         }
 
+        public static bool Empty(this byte[] array)
+        {
+            foreach (byte e in array)
+                if (e != 0)
+                    return false;
+            return true;
+        }
+
         public static string TrimCString(this string str)
         {
             int index = str.IndexOf('\0');

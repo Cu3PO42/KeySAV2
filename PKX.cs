@@ -166,7 +166,7 @@ namespace KeySAV2.Structures
 
         private static byte[] shuffleArray(byte[] pkx, uint sv)
         {
-            byte[] ekx = new Byte[260]; Array.Copy(pkx, ekx, 8);
+            byte[] ekx = new Byte[pkx.Length]; Array.Copy(pkx, ekx, 8);
 
             // Now to shuffle the blocks
 

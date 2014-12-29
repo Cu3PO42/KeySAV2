@@ -39,7 +39,7 @@ namespace KeySAV2
         private static T LoadBase<T>(string file, Func<byte[], T> fn1, Func<byte[], T> fn2)
         {
             FileInfo info = new FileInfo(file);
-            if (info.Length != 0x100000 && info.Length != 0x10009C)
+            if (info.Length != 0x100000 && info.Length != 0x10009C && info.Length != 0x65600 && info.Length != 0x76000)
                 throw new NoSaveException();
             using (FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read))
             {
@@ -66,7 +66,6 @@ namespace KeySAV2
             int[] offset = new int[2];
             byte[] empty = new Byte[232];
             byte[] emptyekx = new Byte[232];
-            byte[] ekxdata = new Byte[232];
             byte[] pkx = new Byte[232];
             byte[] slotsKey = new byte[0];
             byte[] break1, break2, break3;

@@ -225,7 +225,7 @@ namespace KeySAV2
 
             ofd.InitialDirectory = savpath;
             ofd.RestoreDirectory = true;
-            ofd.Filter = "SAV|*.sav;*.bin";
+            ofd.Filter = "SAV 1MB|*.sav;*.bin|Main file|*";
             if (ofd.ShowDialog() == DialogResult.OK)
                 openSAV(ofd.FileName);
         }
@@ -376,7 +376,7 @@ namespace KeySAV2
                     RTB_SAV.AppendText(parameters.header + "\n");
                 for (ushort j = (ushort)(i*30); j < i*30 + 30; ++j)
                 {
-                    PKX? slot = saveReader.getPkx(i);
+                    PKX? slot = saveReader.getPkx(j);
                     if (!slot.HasValue) continue;
                     string res = slot.Value.Dump(parameters, oldLanguage);
                     if (res == null) continue;
@@ -548,7 +548,7 @@ namespace KeySAV2
             {
                 string path = boxsave.FileName;
                 FileInfo info = new FileInfo(path);
-                if ((path.Length == 0x10009C) || path.Length == 0x100000)
+                if ((info.Length == 0x10009C) || info.Length == 0x100000)
                 {
                     textbox.Text = path;
                     file = "SAV";
@@ -642,7 +642,7 @@ namespace KeySAV2
         {
             string result;
             byte[] pkx;
-            SaveKey? key = SaveBreaker.Break(file1, file2, file3, out result, out pkx);
+            SaveKey? key = SaveBreaker.Break(TB_File1.Text, TB_File2.Text, TB_File3.Text, out result, out pkx);
 
             MessageBox.Show(result);
 

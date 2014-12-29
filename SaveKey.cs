@@ -16,7 +16,7 @@ namespace KeySAV2.Structures
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 0x8)]
         byte[] dummy2;
         public UInt32 boxOffset;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 0x80)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 0xE0)]
         byte[] dummy3;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 0x34AD0)]
         public byte[] boxKey1;
@@ -24,7 +24,7 @@ namespace KeySAV2.Structures
         byte[] dummy4;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 0x34AD0)]
         public byte[] boxKey2;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 0xB590)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 0xB530)]
         byte[] dummy5;
         public UInt32 slot1Flag;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 0x34AD0)]
