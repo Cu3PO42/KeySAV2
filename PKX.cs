@@ -240,15 +240,16 @@ namespace KeySAV2.Structures
 
             // Encrypt the Party Stats
             seed = pv;
-            for (int i = 232; i < 260; i += 2)
-            {
-                int pre = ekxdata[i] + ((ekxdata[i + 1]) << 8);
-                seed = LCRNG(seed);
-                int seedxor = (int)((seed) >> 16);
-                int post = (pre ^ seedxor);
-                ekxdata[i] = (byte)((post) & 0xFF);
-                ekxdata[i + 1] = (byte)(((post) >> 8) & 0xFF);
-            }
+            if (pkx.Length > 232)
+                for (int i = 232; i < 260; i += 2)
+                {
+                    int pre = ekxdata[i] + ((ekxdata[i + 1]) << 8);
+                    seed = LCRNG(seed);
+                    int seedxor = (int)((seed) >> 16);
+                    int post = (pre ^ seedxor);
+                    ekxdata[i] = (byte)((post) & 0xFF);
+                    ekxdata[i + 1] = (byte)(((post) >> 8) & 0xFF);
+                }
 
             // Done
             return ekxdata;
