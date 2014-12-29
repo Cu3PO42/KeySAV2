@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 
@@ -68,13 +69,18 @@ namespace KeySAV2
             return true;
         }
 
-        public static String TrimCString(this String str)
+        public static string TrimCString(this string str)
         {
             int index = str.IndexOf('\0');
             if (index < 0)
                 return str;
 
             return str.Substring(0, index);
+        }
+
+        public static string CleanFileName(string fileName)
+        {
+            return Path.GetInvalidFileNameChars().Aggregate(fileName, (current, c) => current.Replace(c.ToString(), string.Empty));
         }
     }
 }

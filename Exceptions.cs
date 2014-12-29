@@ -2,11 +2,15 @@
 
 namespace KeySAV2.Exceptions
 {
-    class NoKeyException : Exception
+    public class NoKeyException : Exception
     {
     }
 
-    class NoSaveException : Exception
+    public class NoSaveException : Exception
+    {
+    }
+
+    public class NoBattleVideoException : Exception
     {
     }
 }

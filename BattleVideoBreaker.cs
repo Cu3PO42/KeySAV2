@@ -9,15 +9,20 @@ namespace KeySAV2
 {
     static class BattleVideoBreaker
     {
-        private static byte[] Load(string file)
+        private static byte[] LoadRaw(string file)
         {
             FileInfo info = new FileInfo(file);
             if (info.Length != 28256)
-                return null;
+                throw new Exceptions.NoBattleVideoException();
             return File.ReadAllBytes(file);
         }
 
-        static byte[] Break(string file1, string file2, out string result)
+        public static BattleVideoReader Load(string file)
+        {
+            return new BattleVideoReader(LoadRaw(file));
+        }
+
+        public static byte[] Break(string file1, string file2, out string result)
         {
             byte[] video1, video2;
             byte[] ezeros = PKX.encrypt(new Byte[260]);
@@ -26,8 +31,8 @@ namespace KeySAV2
             byte[] bvkey = new Byte[0x1000];
             result = "";
 
-            video1 = Load(file1);
-            video2 = Load(file2);
+            video1 = LoadRaw(file1);
+            video2 = LoadRaw(file2);
 
             #region Old Exploit to ensure that the usage is correct
             // Validity Check to see what all is participating...

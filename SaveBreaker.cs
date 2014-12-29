@@ -18,7 +18,7 @@ namespace KeySAV2
             eggnames = new string[] {"タマゴ", "Egg", "Œuf", "Uovo", "Ei", "", "Huevo", "알"};
         }
 
-        static ISaveReader Load(string file)
+        public static ISaveReader Load(string file)
         {
             return LoadBase<ISaveReader>(file, (input => new SaveReaderEncrypted(input)),
                 (input =>
@@ -50,7 +50,7 @@ namespace KeySAV2
                         fs.Seek(0x9C, SeekOrigin.Begin);
                         goto case 0x100000;
                     case 0x100000:
-                        input = new byte[0x10000];
+                        input = new byte[0x100000];
                         fs.Read(input, 0, 0x100000);
                         return fn1(input);
                     default:
@@ -61,7 +61,7 @@ namespace KeySAV2
             }
         }
 
-        static SaveKey? Break(string file1, string file2, string file3)
+        public static SaveKey? Break(string file1, string file2, string file3, out string result, out byte[] respkx)
         {
             int[] offset = new int[2];
             byte[] empty = new Byte[232];
@@ -79,13 +79,13 @@ namespace KeySAV2
             break3 = LoadRaw(file3);
             save1Save = break1;
 
+            result = "";
+
             #region Finding the User Specific Data: Using Valid to keep track of progress...
             // Do Break. Let's first do some sanity checking to find out the 2 offsets we're dumping from.
             // Loop through save file to find
             int fo = break1.Length / 2 + 0x20000; // Initial Offset, can tweak later.
             int success = 0;
-
-            string result = "";
 
             for (int d = 0; d < 2; d++)
             {
@@ -383,10 +383,12 @@ namespace KeySAV2
                 // Success
                 result = "Keystreams were successfully bruteforced!\n\n";
                 result += "Save your keystream now...";
+                respkx = pkx;
                 return SaveKey.Load(savkey);
             }
             else // Failed
-                MessageBox.Show(result + "Keystreams were NOT bruteforced!\n\nStart over and try again :(");
+                result += "Keystreams were NOT bruteforced!\n\nStart over and try again :(";
+            respkx = null;
             return null;
         }
     }

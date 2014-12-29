@@ -6,7 +6,7 @@ using KeySAV2.Exceptions;
 
 namespace KeySAV2
 {
-    public static class SaveKeyStore
+    internal static class SaveKeyStore
     {
         private static Dictionary<UInt64, Tuple<string, Lazy<Tuple<SaveKey, byte[]>>>> keys;
         private static string path;
@@ -40,15 +40,18 @@ namespace KeySAV2
             }
         }
 
-        public static Tuple<SaveKey, byte[]> GetKey(ulong stamp)
+        internal static Tuple<SaveKey, byte[]> GetKey(ulong stamp, out string keyname)
         {
             if (keys.ContainsKey(stamp))
+            {
+                keyname = keys[stamp].Item1;
                 return keys[stamp].Item2.Value;
+            }
 
             throw new NoKeyException();
         }
 
-        public static void Save(object sender, EventArgs e)
+        internal static void Save(object sender, EventArgs e)
         {
             foreach (var key in keys)
             {
@@ -57,7 +60,7 @@ namespace KeySAV2
             }
         }
 
-        public static void UpdateFile(string file)
+        internal static void UpdateFile(string file)
         {
             try
             {
@@ -75,7 +78,7 @@ namespace KeySAV2
 
         }
 
-        public static void UpdateFile(string file, UInt64 stamp)
+        internal static void UpdateFile(string file, UInt64 stamp)
         {
             keys[stamp] = new Tuple<string,Lazy<Tuple<SaveKey,byte[]>>>(file, new Lazy<Tuple<SaveKey,byte[]>>(() => {
                 SaveKey savkey = SaveKey.Load(file);
@@ -83,9 +86,9 @@ namespace KeySAV2
             }));
         }
 
-        public static void UpdateFile(string filename, SaveKey key, ulong stamp)
+        internal static void UpdateFile(string filename, SaveKey key)
         {
-            keys[stamp] = new Tuple<string, Lazy<Tuple<SaveKey, byte[]>>>(filename, new Lazy<Tuple<SaveKey, byte[]>>(
+            keys[key.stamp] = new Tuple<string, Lazy<Tuple<SaveKey, byte[]>>>(filename, new Lazy<Tuple<SaveKey, byte[]>>(
                 () => new Tuple<SaveKey, byte[]>(key, key.Blank)));
         }
     }

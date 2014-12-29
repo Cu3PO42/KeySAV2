@@ -2,17 +2,25 @@
 using System.IO;
 using KeySAV2.Structures;
 
-namespace KeySAV2.Resources
+namespace KeySAV2
 {
-    class BattleVideoReader
+    public class BattleVideoReader
     {
         private const ushort offset = 0x4E18;
         private const ushort keyoff = 0x100;
 
+        private static string path;
+
         private byte[] video;
         private byte[] key;
+        public readonly string KeyName;
 
-        BattleVideoReader(byte[] file)
+        static BattleVideoReader()
+        {
+            path = Path.Combine(System.Windows.Forms.Application.StartupPath, "data");
+        }
+
+        internal BattleVideoReader(byte[] file)
         {
             video = file;
             ulong stamp = BitConverter.ToUInt64(video, 0x10);
@@ -28,7 +36,10 @@ namespace KeySAV2.Resources
                         data = File.ReadAllBytes(files[i]);
                         ulong newstamp = BitConverter.ToUInt64(data, 0x0);
                         if (newstamp == stamp)
+                        {
                             key = data;
+                            KeyName = fi.Name;
+                        }
                     }
                 }
             }
@@ -36,13 +47,18 @@ namespace KeySAV2.Resources
                 throw new Exceptions.NoKeyException();
         }
         
-        PKX getPkx(byte slot, byte opponent)
+        public PKX getPkx(byte slot, byte opponent)
         {
             byte[] ekx;
             byte[] pkx;
             ekx = Utility.xor(video, (uint)(offset + 260 * slot + opponent * 620), key, (uint)(keyoff + 260 * slot + opponent * 0x700), 260);
             pkx = PKX.decrypt(ekx);
             return new PKX(PKX.verifyCHK(pkx) ? pkx : ekx, -1, slot, false);
-    }
+        }
+
+        public bool DumpsEnemy
+        {
+            get { return BitConverter.ToUInt64(key, 0x800) != 0; }
+        }
     }
 }

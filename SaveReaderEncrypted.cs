@@ -5,23 +5,28 @@ using KeySAV2.Structures;
 
 namespace KeySAV2
 {
-    class SaveReaderEncrypted : ISaveReader
+    public class SaveReaderEncrypted : ISaveReader
     {
         private readonly byte[] sav;
         private readonly SaveKey key;
         private readonly byte[] blank;
         private readonly byte activeSlot;
+        private readonly string _KeyName;
+
+        public string KeyName
+        {
+            get { return _KeyName; }
+        }
 
         private readonly static byte[] zeros;
         private readonly static byte[] ezeros;
 
-
-        public SaveReaderEncrypted(byte[] file)
+        internal SaveReaderEncrypted(byte[] file)
         {
             sav = file;
-            UInt64 stamp = BitConverter.ToUInt64(sav, 0x10);
+            ulong stamp = BitConverter.ToUInt64(sav, 0x10);
 
-            Tuple<SaveKey, byte[]> tmp = SaveKeyStore.GetKey(stamp);
+            Tuple<SaveKey, byte[]> tmp = SaveKeyStore.GetKey(stamp, out _KeyName);
             key = tmp.Item1;
             blank = tmp.Item2;
 

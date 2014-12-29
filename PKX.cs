@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Security.Policy;
 using System.Text;
 
 namespace KeySAV2.Structures
@@ -280,38 +279,38 @@ namespace KeySAV2.Structures
 
             return dloc[sv];
         }
-        string Dump(FormattingParameters parameters, string lang)
+        public string Dump(FormattingParameters parameters, string lang)
         {
             if (isghost && parameters.ghost == FormattingParameters.GhostMode.Hide) return null; 
 
             // Printout Parsing
-            if (this.species == 0) //RTB_SAV.AppendText("SLOT EMPTY");
+            if (this.species == 0) 
                 return null;
 
             string box = this.box == -1 ? "~" :  "B"+(this.box+1).ToString("00");
             string slot = ((this.slot / 6 + 1).ToString() + "," + (this.slot % 6 + 1).ToString());
-            string species = NameResourceManager.GetSpecies(lang, this.species);
+            string species = NameResourceManager.GetSpecies(lang)[this.species];
             string gender = this.genderstring;
-            string nature = NameResourceManager.GetNature(lang, this.nature);
-            string ability = NameResourceManager.GetAbility(lang, this.ability);
+            string nature = NameResourceManager.GetNatures(lang)[this.nature];
+            string ability = NameResourceManager.GetAbilities(lang)[this.ability];
             string hp = this.HP_IV.ToString();
             string atk = this.ATK_IV.ToString();
             string def = this.DEF_IV.ToString();
             string spa = this.SPA_IV.ToString();
             string spd = this.SPD_IV.ToString();
             string spe = this.SPE_IV.ToString();
-            string hptype = NameResourceManager.GetType(lang, this.hptype);
+            string hptype = NameResourceManager.GetTypes(lang)[(int)this.hptype];
             string ESV = this.ESV.ToString("0000");
             string TSV = this.TSV.ToString("0000");
-            string ball = NameResourceManager.GetBall(lang, this.ball);
+            string ball = NameResourceManager.GetBalls(lang)[this.ball];
             string nickname = this.nicknamestr;
             string otname = this.ot;
             string TID = this.TID.ToString("00000");
             string SID = this.SID.ToString("00000");
-            string move1 = NameResourceManager.GetMove(lang, this.move1);
-            string move2 = NameResourceManager.GetMove(lang, this.move2);
-            string move3 = NameResourceManager.GetMove(lang, this.move3);
-            string move4 = NameResourceManager.GetMove(lang, this.move4);
+            string move1 = NameResourceManager.GetMoves(lang)[this.move1];
+            string move2 = NameResourceManager.GetMoves(lang)[this.move2];
+            string move3 = NameResourceManager.GetMoves(lang)[this.move3];
+            string move4 = NameResourceManager.GetMoves(lang)[this.move4];
             string ev_hp = this.HP_EV.ToString();
             string ev_at = this.ATK_EV.ToString();
             string ev_de = this.DEF_EV.ToString();
@@ -320,18 +319,18 @@ namespace KeySAV2.Structures
             string ev_se = this.SPE_EV.ToString();
 
             // Bonus
-            string relearn1 = NameResourceManager.GetMove(lang, this.eggmove1);
-            string relearn2 = NameResourceManager.GetMove(lang, this.eggmove2);
-            string relearn3 = NameResourceManager.GetMove(lang, this.eggmove3);
-            string relearn4 = NameResourceManager.GetMove(lang, this.eggmove4);
+            string relearn1 = NameResourceManager.GetMoves(lang)[this.eggmove1];
+            string relearn2 = NameResourceManager.GetMoves(lang)[this.eggmove2];
+            string relearn3 = NameResourceManager.GetMoves(lang)[this.eggmove3];
+            string relearn4 = NameResourceManager.GetMoves(lang)[this.eggmove4];
             string isshiny = ""; if (this.isshiny) isshiny = "★";
             string isegg = ""; if (this.isegg) isegg = "✓";
 
-            if (!this.isegg) ESV = "";
+            ESV = !this.isegg ? "" : parameters.encloseESV ? "[" + ESV + "]" : ESV;
 
             // Vivillon Forms...
             if (this.species >= 664 && this.species <= 666)
-                species += "-" + NameResourceManager.GetVivillon(lang, this.altforms);
+                species += "-" + NameResourceManager.GetVivillons(lang)[this.altforms];
 
             if (parameters.boldIVs)
             {

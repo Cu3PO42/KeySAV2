@@ -11,8 +11,14 @@ namespace KeySAV2
 
         private readonly byte[] sav;
         private readonly uint offset;
+        private const string _KeyName = "Decrypted. No Key needed";
 
-        public SaveReaderDecrypted(byte[] file, string type)
+        public string KeyName
+        {
+            get { return _KeyName; }
+        }
+
+        internal SaveReaderDecrypted(byte[] file, string type)
         {
             sav = file;
             offset = string.Equals(type, "XY", StringComparison.Ordinal) ? xyOffset : orasOffset;
