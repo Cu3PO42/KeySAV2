@@ -41,6 +41,8 @@
             this.RTB_VID = new System.Windows.Forms.RichTextBox();
             this.Tab_SAV = new System.Windows.Forms.TabPage();
             this.GB_Filter = new System.Windows.Forms.GroupBox();
+            this.CB_Species = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.CB_Abilities = new System.Windows.Forms.ComboBox();
             this.L_Ability = new System.Windows.Forms.Label();
             this.L_Nature = new System.Windows.Forms.Label();
@@ -263,6 +265,10 @@
             // 
             // GB_Filter
             // 
+            this.GB_Filter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.GB_Filter.Controls.Add(this.CB_Species);
+            this.GB_Filter.Controls.Add(this.label3);
             this.GB_Filter.Controls.Add(this.CB_Abilities);
             this.GB_Filter.Controls.Add(this.L_Ability);
             this.GB_Filter.Controls.Add(this.L_Nature);
@@ -293,13 +299,34 @@
             this.GB_Filter.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.GB_Filter.Location = new System.Drawing.Point(3, 77);
             this.GB_Filter.Name = "GB_Filter";
-            this.GB_Filter.Size = new System.Drawing.Size(316, 251);
+            this.GB_Filter.Size = new System.Drawing.Size(316, 280);
             this.GB_Filter.TabIndex = 31;
             this.GB_Filter.TabStop = false;
             this.GB_Filter.Text = "Filtering";
             // 
+            // CB_Species
+            // 
+            this.CB_Species.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.CB_Species.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.CB_Species.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CB_Species.FormattingEnabled = true;
+            this.CB_Species.Location = new System.Drawing.Point(187, 252);
+            this.CB_Species.Name = "CB_Species";
+            this.CB_Species.Size = new System.Drawing.Size(123, 21);
+            this.CB_Species.TabIndex = 33;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(132, 255);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 13);
+            this.label3.TabIndex = 32;
+            this.label3.Text = "Species";
+            // 
             // CB_Abilities
             // 
+            this.CB_Abilities.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.CB_Abilities.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.CB_Abilities.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CB_Abilities.FormattingEnabled = true;
@@ -705,10 +732,10 @@
             this.RTB_SAV.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.RTB_SAV.Location = new System.Drawing.Point(0, 334);
+            this.RTB_SAV.Location = new System.Drawing.Point(0, 363);
             this.RTB_SAV.Name = "RTB_SAV";
             this.RTB_SAV.ReadOnly = true;
-            this.RTB_SAV.Size = new System.Drawing.Size(320, 168);
+            this.RTB_SAV.Size = new System.Drawing.Size(320, 139);
             this.RTB_SAV.TabIndex = 30;
             this.RTB_SAV.Text = "";
             this.RTB_SAV.WordWrap = false;
@@ -1224,7 +1251,8 @@
         private System.Windows.Forms.Label L_Nature;
         private System.Windows.Forms.ComboBox CB_Abilities;
         private System.Windows.Forms.Label L_Ability;
-
+        private System.Windows.Forms.ComboBox CB_Species;
+        private System.Windows.Forms.Label label3;
     }
 }
 

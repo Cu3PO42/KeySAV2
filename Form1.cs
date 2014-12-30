@@ -42,10 +42,10 @@ namespace KeySAV2
             CB_ExportStyle.SelectedIndex = 0;
             CB_BoxColor.SelectedIndex = 0;
             CB_No_IVs.SelectedIndex = 0;
+            CB_Species.SelectedIndex = 0;
             toggleFilter(null, null);
             loadINI();
             this.FormClosing += onFormClose;
-            InitializeStrings();
         }
         
         // Drag & Drop Events // 
@@ -388,6 +388,10 @@ namespace KeySAV2
                         if (CB_Abilities.Text != "" && CB_Abilities.SelectedIndex != 0 && CB_Abilities.Text != NameResourceManager.GetAbilities(oldLanguage)[pkx.ability])
                             return false;
 
+                        if (CB_Species.Text != "" && CB_Species.SelectedIndex != 0 &&
+                            CB_Species.SelectedIndex != pkx.species)
+                            return false;
+
                         bool checkHP = CCB_HPType.GetItemCheckState(0) != CheckState.Checked;
                         byte checkHPDiff = (byte)Convert.ToInt16(checkHP);
                         int perfects = CB_No_IVs.SelectedIndex;
@@ -534,7 +538,8 @@ namespace KeySAV2
             CHK_Hatches_Shiny_For.Enabled = TB_SVs.Enabled =
             CHK_Egg.Enabled = RAD_Male.Enabled = RAD_Female.Enabled =
             RAD_GenderAny.Enabled  = CCB_Natures.Enabled =
-            CB_Abilities.Enabled = CHK_Enable_Filtering.Checked;
+            CB_Abilities.Enabled = CB_Species.Enabled =
+            CHK_Enable_Filtering.Checked;
         }
 
         // File Keystream Breaking
@@ -919,61 +924,46 @@ namespace KeySAV2
         // Translation
         private void changeLanguage(object sender, EventArgs e)
         {
-            InitializeStrings();
+            string curlanguage = NameResourceManager.languages[CB_MainLanguage.SelectedIndex];
+
+            if (CB_Species.DataSource == null)
+            {
+                InitializeStrings();
+                return;
+            }
+            ((CB_Species.DataSource as BindingSource).DataSource as ReadOnlyOverwriteFirstList<string>).Data =
+                NameResourceManager.GetSpecies(curlanguage);
+            ((CB_Abilities.DataSource as BindingSource).DataSource as ReadOnlyOverwriteFirstList<string>).Data =
+                NameResourceManager.GetAbilities(curlanguage);
+            ((CCB_HPType.DataSource as BindingSource).DataSource as ReadOnlyOverwriteFirstList<string>).Data =
+                NameResourceManager.GetTypes(curlanguage);
+            ((CCB_Natures.DataSource as BindingSource).DataSource as ReadOnlyOverwriteFirstList<string>).Data =
+                NameResourceManager.GetNatures(curlanguage);
         }
         private void InitializeStrings()
         {
             string curlanguage = NameResourceManager.languages[CB_MainLanguage.SelectedIndex];
 
-            var natures = NameResourceManager.GetNatures(curlanguage);
-            var types = NameResourceManager.GetTypes(curlanguage);
-            var abilitylist = NameResourceManager.GetAbilities(curlanguage);
-
-            int curAbility;
-            if (CB_Abilities.Text != "")
-                curAbility = NameResourceManager.GetAbilities(oldLanguage).IndexOf(CB_Abilities.Text);
-            else
-                curAbility = -1;
-
-            // Populate natures in filters
-            if (CCB_Natures.Items.Count == 0)
+            CB_Species.DataSource = new BindingSource
             {
-                CCB_Natures.Items.Add(new CCBoxItem("All", 0));
-                for (byte i = 0; i < natures.Count;)
-                    CCB_Natures.Items.Add(new CCBoxItem(natures[i], ++i));
-                CCB_Natures.DisplayMember = "Name";
-                CCB_Natures.SetItemChecked(0, true);
-            }
-            else
+                DataSource = new ReadOnlyOverwriteFirstList<string>(NameResourceManager.GetSpecies(curlanguage), "Any")
+            };
+            CB_Abilities.DataSource = new BindingSource
             {
-                for (byte i = 0; i < natures.Count; ++i)
-                    (CCB_Natures.Items[i+1] as CCBoxItem).Name = natures[i];
-            }
-
-            // Populate HP types in filters
-            if (CCB_HPType.Items.Count == 0)
+                DataSource = new ReadOnlyOverwriteFirstSortedList<string>(NameResourceManager.GetAbilities(curlanguage), "Any", CB_Abilities)
+            };
+            CCB_HPType.DataSource = new BindingSource
             {
-                CCB_HPType.Items.Add(new CCBoxItem("Any", 0));
-                for (byte i = 1; i < types.Count-1;)
-                    CCB_HPType.Items.Add(new CCBoxItem(types[i], ++i));
-                CCB_HPType.DisplayMember = "Name";
-                CCB_HPType.SetItemChecked(0, true);
-            }
-            else
+                DataSource = new ReadOnlyOverwriteFirstList<string>(NameResourceManager.GetTypes(curlanguage), "Any")
+            };
+            CCB_Natures.DataSource = new BindingSource
             {
-                for (byte i = 1; i < types.Count-1; ++i)
-                    (CCB_HPType.Items[i] as CCBoxItem).Name = types[i];
-            }
-
-            // Populate ability list
-            string[] sortedAbilities = abilitylist.ToArray();
-            Array.Sort(sortedAbilities);
-            CB_Abilities.Items.Clear();
-            CB_Abilities.Items.AddRange(sortedAbilities);
-            if (curAbility != -1) CB_Abilities.Text = abilitylist[curAbility];
+                DataSource = new ReadOnlyInsertFirstList<string>(NameResourceManager.GetNatures(curlanguage), "Any")
+            };
+            CCB_HPType.SetItemChecked(0, true);
+            CCB_Natures.SetItemChecked(0, true);
 
             oldLanguage = curlanguage;
-
         }
 
         private void B_BKP_SAV_Click(object sender, EventArgs e)

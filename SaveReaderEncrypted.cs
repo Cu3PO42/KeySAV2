@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Linq;
 using KeySAV2.Structures;
 
 namespace KeySAV2
@@ -13,10 +12,7 @@ namespace KeySAV2
         private readonly byte activeSlot;
         private readonly string _KeyName;
 
-        public string KeyName
-        {
-            get { return _KeyName; }
-        }
+        public string KeyName => _KeyName;
 
         private readonly static byte[] zeros;
         private readonly static byte[] ezeros;
@@ -29,6 +25,8 @@ namespace KeySAV2
             Tuple<SaveKey, byte[]> tmp = SaveKeyStore.GetKey(stamp, out _KeyName);
             key = tmp.Item1;
             blank = tmp.Item2;
+
+            _KeyName = Path.GetFileName(_KeyName);
 
             if (key.slot1Flag == BitConverter.ToInt32(sav, 0x168))
                 activeSlot = 0;

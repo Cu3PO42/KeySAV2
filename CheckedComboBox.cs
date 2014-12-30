@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
@@ -285,6 +286,12 @@ namespace CheckComboBox {
         public new CheckedListBox.ObjectCollection Items {
             get { return dropdown.List.Items; }
         }
+
+        public new object DataSource
+        {
+            get { return dropdown.List.DataSource;  }
+            set { dropdown.List.DataSource = value;  }
+        }   
 
         public CheckedListBox.CheckedItemCollection CheckedItems {
             get { return dropdown.List.CheckedItems; }
