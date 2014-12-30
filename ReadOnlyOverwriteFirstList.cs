@@ -103,15 +103,30 @@ namespace KeySAV2
             CopyTo((T[]) array, index);
         }
 
-        public virtual int Count => Math.Max(1, Data.Count);
+        public virtual int Count
+        {
+            get { return Math.Max(1, Data.Count); }
+        }
 
-        public object SyncRoot => ((ICollection) Data).SyncRoot;
+        public object SyncRoot
+        {
+            get { return ((ICollection) Data).SyncRoot; }
+        }
 
-        public bool IsSynchronized => ((ICollection) Data).IsSynchronized;
+        public bool IsSynchronized
+        {
+            get { return ((ICollection) Data).IsSynchronized; }
+        }
 
-        public bool IsReadOnly => true;
+        public bool IsReadOnly
+        {
+            get { return true; }
+        }
 
-        public bool IsFixedSize => true;
+        public bool IsFixedSize
+        {
+            get { return true; }
+        }
 
         public virtual int IndexOf(T item)
         {
@@ -173,17 +188,35 @@ namespace KeySAV2
             throw new NotImplementedException();
         }
 
-        public bool AllowNew => false;
+        public bool AllowNew
+        {
+            get { return false; }
+        }
 
-        public bool AllowEdit => false;
+        public bool AllowEdit
+        {
+            get { return false; }
+        }
 
-        public bool AllowRemove => false;
+        public bool AllowRemove
+        {
+            get { return false; }
+        }
 
-        public bool SupportsChangeNotification => true;
+        public bool SupportsChangeNotification
+        {
+            get { return true; }
+        }
 
-        public bool SupportsSearching => false;
+        public bool SupportsSearching
+        {
+            get { return false; }
+        }
 
-        public bool SupportsSorting => false;
+        public bool SupportsSorting
+        {
+            get { return false; }
+        }
 
         public bool IsSorted
         {

@@ -12,7 +12,10 @@ namespace KeySAV2
         private readonly byte activeSlot;
         private readonly string _KeyName;
 
-        public string KeyName => _KeyName;
+        public string KeyName
+        {
+            get { return _KeyName; }
+        }
 
         private readonly static byte[] zeros;
         private readonly static byte[] ezeros;

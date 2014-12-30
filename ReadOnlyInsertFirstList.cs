@@ -32,7 +32,10 @@ namespace KeySAV2
             array[arrayIndex] = Overwrite;
         }
 
-        public override int Count => 1 + Data.Count;
+        public override int Count
+        {
+            get { return 1 + Data.Count; }
+        }
 
         public override int IndexOf(T item)
         {

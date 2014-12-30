@@ -19,7 +19,6 @@
             this.encloseESV = encloseESV;
         }
 
-        public FormattingParameters() : this("", "", GhostMode.Mark, false, false) {}
         public FormattingParameters(string header, string formatString) : this(header, formatString, GhostMode.Mark, false, false) {}
         public FormattingParameters(string header, string formatString, GhostMode ghost) : this(header, formatString, ghost, false, false) {}
         public FormattingParameters(string header, string formatString, bool boldIVs) : this(header, formatString, GhostMode.Mark, boldIVs, false) {}
