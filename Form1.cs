@@ -223,6 +223,8 @@ namespace KeySAV2
         {
             OpenFileDialog ofd = new OpenFileDialog();
 
+            if (!Directory.Exists(savpath))
+                savpath = bakpath;
             ofd.InitialDirectory = savpath;
             ofd.RestoreDirectory = true;
             ofd.Filter = "SAV 1MB|*.sav;*.bin|Main file|*";
@@ -233,6 +235,8 @@ namespace KeySAV2
         {
             OpenFileDialog ofd = new OpenFileDialog();
 
+            if (!Directory.Exists(savpath))
+                savpath = bakpath;
             ofd.InitialDirectory = vidpath;
             ofd.RestoreDirectory = true;
             ofd.Filter = "Battle Video|*.*";
