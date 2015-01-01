@@ -79,18 +79,17 @@ namespace KeySAV2
 
             if (Utility.SequenceEqual(break1, 0x80000, break2, 0x80000, 0x7F000))
             {
-                // It's actually break2, but we are switching saves hereafter.
-                save1Save = break1;
-                for (uint i = 0x1000; i < 0x80000; ++i)
+                save1Save = break2;
+                for (uint i = 0x27A00; i < 0x6CED0; ++i)
                     break2[i + 0x7F000] = (byte) (break2[i] ^ break1[i] ^ break1[i + 0x7F000]);
             }
             else if (Utility.SequenceEqual(break1, 0x1000, break2, 0x1000, 0x7F000))
             {
-                save1Save = break2;
+                save1Save = break1;
             }
             else
             {
-                result = "The saves are seperated by more than one save. Please follow the instructions.";
+                result = "The saves are seperated by more than one save.\nPlease follow the instructions.";
                 respkx = new byte[232];
                 return null;
             }
@@ -100,13 +99,13 @@ namespace KeySAV2
             #region Finding the User Specific Data: Using Valid to keep track of progress...
             // Do Break. Let's first do some sanity checking to find out the 2 offsets we're dumping from.
             // Loop through save file to find
-            int fo = 0x27A00 + 0x7F000; // Initial Offset, can tweak later.
+            int fo = 0xA6A00; // Initial Offset, can tweak later.
             int success = 0;
 
             for (int d = 0; d < 2; d++)
             {
                 // Do this twice to get both box offsets.
-                for (int i = fo; i < 0xEE000; i++)
+                for (int i = fo; i <= 0xB7400; i += 0x10A00) 
                 {
                     int err = 0;
                     // Start at findoffset and see if it matches pattern
@@ -342,7 +341,7 @@ namespace KeySAV2
                 Array.Copy(save1Save, 0x168, savkey, 0x80000, 4);
 
                 // Copy the key for the other save slot
-                Utility.xor(break2, (uint)offset[0], break2, (uint)(offset[0]-0x7F000), 232*30*31);
+                Utility.xor(break2, (uint)offset[0], break2, (uint)(offset[0]-0x7F000), savkey, 0x80004, 232*30*31);
 
                 // Since we don't know if the user put them in in the wrong order, let's just markup our keystream with data.
                 byte[] data1 = new Byte[232];
