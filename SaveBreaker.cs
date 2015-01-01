@@ -61,29 +61,46 @@ namespace KeySAV2
             }
         }
 
-        public static SaveKey? Break(string file1, string file2, string file3, out string result, out byte[] respkx)
+        public static SaveKey? Break(string file1, string file2, out string result, out byte[] respkx)
         {
             int[] offset = new int[2];
             byte[] empty = new Byte[232];
             byte[] emptyekx = new Byte[232];
             byte[] pkx = new Byte[232];
-            byte[] slotsKey = new byte[0];
-            byte[] break1, break2, break3;
+            byte[] break1, break2;
             byte[] savkey;
             byte[] save1Save;
             savkey = new byte[0xB4AD4];
 
             break1 = LoadRaw(file1);
             break2 = LoadRaw(file2);
-            break3 = LoadRaw(file3);
-            save1Save = break1;
 
             result = "";
+
+            if (Utility.SequenceEqual(break1, 0x80000, break2, 0x80000, 0x7F000))
+            {
+                // It's actually break2, but we are switching saves hereafter.
+                save1Save = break1;
+                for (uint i = 0x1000; i < 0x80000; ++i)
+                    break2[i + 0x7F000] = (byte) (break2[i] ^ break1[i] ^ break1[i + 0x7F000]);
+            }
+            else if (Utility.SequenceEqual(break1, 0x1000, break2, 0x1000, 0x7F000))
+            {
+                save1Save = break2;
+            }
+            else
+            {
+                result = "The saves are seperated by more than one save. Please follow the instructions.";
+                respkx = new byte[232];
+                return null;
+            }
+
+            Utility.Switch(ref break1, ref break2);
 
             #region Finding the User Specific Data: Using Valid to keep track of progress...
             // Do Break. Let's first do some sanity checking to find out the 2 offsets we're dumping from.
             // Loop through save file to find
-            int fo = break1.Length / 2 + 0x20000; // Initial Offset, can tweak later.
+            int fo = 0x27A00 + 0x7F000; // Initial Offset, can tweak later.
             int success = 0;
 
             for (int d = 0; d < 2; d++)
@@ -314,34 +331,7 @@ namespace KeySAV2
                     #endregion
                 }
             }
-            if (success == 1)
-            {
-                byte[] diff1 = new byte[31*30*232];
-                byte[] diff2 = new byte[31*30*232];
-                for(uint i = 0; i < 31*30*232; ++i)
-                {
-                    diff1[i] = (byte)(break1[offset[0] + i] ^ break1[offset[0] + i - 0x7F000]);
-                }
-                for(uint i = 0; i < 31*30*232; ++i)
-                {
-                    diff2[i] = (byte)(break2[offset[0] + i] ^ break2[offset[0] + i - 0x7F000]);
-                }
-                if (diff1.SequenceEqual(diff2))
-                {
-                    bool break3is1 = true;
-                    for(uint i = (uint)offset[0]; i<offset[0] + 31*30*232; ++i)
-                    {
-                        if(!(break2[i] == break3[i]))
-                        {
-                            break3is1 = false;
-                            break;
-                        }
-                    }
-                    if (break3is1) save1Save = break3;
-                    slotsKey = diff1;
-                }
-                else success = 0;
-            }
+            
             if (success == 1)
             {
                 // Clear the keystream file...
@@ -352,7 +342,7 @@ namespace KeySAV2
                 Array.Copy(save1Save, 0x168, savkey, 0x80000, 4);
 
                 // Copy the key for the other save slot
-                Array.Copy(slotsKey, 0, savkey, 0x80004, 232*30*31);
+                Utility.xor(break2, (uint)offset[0], break2, (uint)(offset[0]-0x7F000), 232*30*31);
 
                 // Since we don't know if the user put them in in the wrong order, let's just markup our keystream with data.
                 byte[] data1 = new Byte[232];

@@ -46,6 +46,8 @@
             this.CB_Abilities = new System.Windows.Forms.ComboBox();
             this.L_Ability = new System.Windows.Forms.Label();
             this.L_Nature = new System.Windows.Forms.Label();
+            this.CCB_HPType = new CheckComboBox.CheckedComboBoxAll();
+            this.CCB_Natures = new CheckComboBox.CheckedComboBoxAll();
             this.RAD_GenderAny = new System.Windows.Forms.RadioButton();
             this.RAD_Female = new System.Windows.Forms.RadioButton();
             this.RAD_Male = new System.Windows.Forms.RadioButton();
@@ -89,8 +91,6 @@
             this.CHK_Split = new System.Windows.Forms.CheckBox();
             this.CHK_BoldIVs = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.TB_File3 = new System.Windows.Forms.TextBox();
-            this.B_File3 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.B_BreakFolder = new System.Windows.Forms.Button();
             this.TB_Folder = new System.Windows.Forms.TextBox();
@@ -108,8 +108,6 @@
             this.RTB_OPTIONS = new System.Windows.Forms.RichTextBox();
             this.CB_MainLanguage = new System.Windows.Forms.ComboBox();
             this.CB_Game = new System.Windows.Forms.ComboBox();
-            this.CCB_HPType = new CheckComboBox.CheckedComboBoxAll();
-            this.CCB_Natures = new CheckComboBox.CheckedComboBoxAll();
             this.tab_Main.SuspendLayout();
             this.Tab_BV.SuspendLayout();
             this.Tab_SAV.SuspendLayout();
@@ -353,6 +351,36 @@
             this.L_Nature.Size = new System.Drawing.Size(39, 13);
             this.L_Nature.TabIndex = 29;
             this.L_Nature.Text = "Nature";
+            // 
+            // CCB_HPType
+            // 
+            this.CCB_HPType.CheckOnClick = false;
+            this.CCB_HPType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.CCB_HPType.DropDownHeight = 1;
+            this.CCB_HPType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CCB_HPType.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.CCB_HPType.FormattingEnabled = true;
+            this.CCB_HPType.IntegralHeight = false;
+            this.CCB_HPType.Location = new System.Drawing.Point(187, 40);
+            this.CCB_HPType.Name = "CCB_HPType";
+            this.CCB_HPType.Size = new System.Drawing.Size(123, 21);
+            this.CCB_HPType.TabIndex = 28;
+            this.CCB_HPType.ValueSeparator = ", ";
+            // 
+            // CCB_Natures
+            // 
+            this.CCB_Natures.BackColor = System.Drawing.Color.White;
+            this.CCB_Natures.CheckOnClick = true;
+            this.CCB_Natures.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.CCB_Natures.DropDownHeight = 1;
+            this.CCB_Natures.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CCB_Natures.FormattingEnabled = true;
+            this.CCB_Natures.IntegralHeight = false;
+            this.CCB_Natures.Location = new System.Drawing.Point(187, 198);
+            this.CCB_Natures.Name = "CCB_Natures";
+            this.CCB_Natures.Size = new System.Drawing.Size(123, 21);
+            this.CCB_Natures.TabIndex = 27;
+            this.CCB_Natures.ValueSeparator = ", ";
             // 
             // RAD_GenderAny
             // 
@@ -865,8 +893,6 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.TB_File3);
-            this.groupBox1.Controls.Add(this.B_File3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.B_BreakFolder);
             this.groupBox1.Controls.Add(this.TB_Folder);
@@ -878,38 +904,17 @@
             this.groupBox1.Controls.Add(this.B_File1);
             this.groupBox1.Controls.Add(this.TB_File2);
             this.groupBox1.Controls.Add(this.TB_File1);
-            this.groupBox1.Location = new System.Drawing.Point(1, 320);
+            this.groupBox1.Location = new System.Drawing.Point(0, 340);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(320, 183);
+            this.groupBox1.Size = new System.Drawing.Size(320, 162);
             this.groupBox1.TabIndex = 24;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Breaker";
             // 
-            // TB_File3
-            // 
-            this.TB_File3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.TB_File3.Location = new System.Drawing.Point(85, 101);
-            this.TB_File3.Name = "TB_File3";
-            this.TB_File3.ReadOnly = true;
-            this.TB_File3.Size = new System.Drawing.Size(229, 20);
-            this.TB_File3.TabIndex = 34;
-            // 
-            // B_File3
-            // 
-            this.B_File3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.B_File3.Location = new System.Drawing.Point(5, 100);
-            this.B_File3.Name = "B_File3";
-            this.B_File3.Size = new System.Drawing.Size(75, 23);
-            this.B_File3.TabIndex = 33;
-            this.B_File3.Text = "File 3";
-            this.B_File3.UseVisualStyleBackColor = true;
-            this.B_File3.Click += new System.EventHandler(this.loadBreak3);
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 133);
+            this.label2.Location = new System.Drawing.Point(9, 106);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(217, 13);
             this.label2.TabIndex = 32;
@@ -920,7 +925,7 @@
             this.B_BreakFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.B_BreakFolder.Enabled = false;
             this.B_BreakFolder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.B_BreakFolder.Location = new System.Drawing.Point(239, 128);
+            this.B_BreakFolder.Location = new System.Drawing.Point(238, 101);
             this.B_BreakFolder.Name = "B_BreakFolder";
             this.B_BreakFolder.Size = new System.Drawing.Size(75, 23);
             this.B_BreakFolder.TabIndex = 31;
@@ -932,7 +937,7 @@
             // 
             this.TB_Folder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.TB_Folder.Location = new System.Drawing.Point(85, 158);
+            this.TB_Folder.Location = new System.Drawing.Point(84, 131);
             this.TB_Folder.Name = "TB_Folder";
             this.TB_Folder.ReadOnly = true;
             this.TB_Folder.Size = new System.Drawing.Size(229, 20);
@@ -941,7 +946,7 @@
             // B_Folder
             // 
             this.B_Folder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.B_Folder.Location = new System.Drawing.Point(5, 157);
+            this.B_Folder.Location = new System.Drawing.Point(4, 130);
             this.B_Folder.Name = "B_Folder";
             this.B_Folder.Size = new System.Drawing.Size(75, 23);
             this.B_Folder.TabIndex = 29;
@@ -954,18 +959,18 @@
             this.L_instrSAV.AutoSize = true;
             this.L_instrSAV.Location = new System.Drawing.Point(9, 27);
             this.L_instrSAV.Name = "L_instrSAV";
-            this.L_instrSAV.Size = new System.Drawing.Size(229, 13);
+            this.L_instrSAV.Size = new System.Drawing.Size(164, 13);
             this.L_instrSAV.TabIndex = 22;
-            this.L_instrSAV.Text = "SAV: File 1 = \"26\", File 2 = \"16\", File 3 = \"165\"";
+            this.L_instrSAV.Text = "SAV: File 1 = \"16\", File 2 = \"165\"";
             // 
             // L_instrBV
             // 
             this.L_instrBV.AutoSize = true;
             this.L_instrBV.Location = new System.Drawing.Point(17, 14);
             this.L_instrBV.Name = "L_instrBV";
-            this.L_instrBV.Size = new System.Drawing.Size(217, 13);
+            this.L_instrBV.Size = new System.Drawing.Size(148, 13);
             this.L_instrBV.TabIndex = 21;
-            this.L_instrBV.Text = "BV: File 1 = \"-1\",  File 2 = \"-2\", File 3 = None";
+            this.L_instrBV.Text = "BV: File 1 = \"-1\",  File 2 = \"-2\"";
             // 
             // B_Break
             // 
@@ -1070,7 +1075,7 @@
             this.RTB_OPTIONS.Location = new System.Drawing.Point(0, 100);
             this.RTB_OPTIONS.Name = "RTB_OPTIONS";
             this.RTB_OPTIONS.ReadOnly = true;
-            this.RTB_OPTIONS.Size = new System.Drawing.Size(320, 214);
+            this.RTB_OPTIONS.Size = new System.Drawing.Size(320, 234);
             this.RTB_OPTIONS.TabIndex = 29;
             this.RTB_OPTIONS.Text = "";
             this.RTB_OPTIONS.ReadOnlyChanged += new System.EventHandler(this.changeReadOnly);
@@ -1110,36 +1115,6 @@
             this.CB_Game.Size = new System.Drawing.Size(41, 21);
             this.CB_Game.TabIndex = 2;
             this.CB_Game.SelectedIndexChanged += new System.EventHandler(this.changedetectgame);
-            // 
-            // CCB_HPType
-            // 
-            this.CCB_HPType.CheckOnClick = false;
-            this.CCB_HPType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.CCB_HPType.DropDownHeight = 1;
-            this.CCB_HPType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CCB_HPType.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.CCB_HPType.FormattingEnabled = true;
-            this.CCB_HPType.IntegralHeight = false;
-            this.CCB_HPType.Location = new System.Drawing.Point(187, 40);
-            this.CCB_HPType.Name = "CCB_HPType";
-            this.CCB_HPType.Size = new System.Drawing.Size(123, 21);
-            this.CCB_HPType.TabIndex = 28;
-            this.CCB_HPType.ValueSeparator = ", ";
-            // 
-            // CCB_Natures
-            // 
-            this.CCB_Natures.BackColor = System.Drawing.Color.White;
-            this.CCB_Natures.CheckOnClick = true;
-            this.CCB_Natures.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.CCB_Natures.DropDownHeight = 1;
-            this.CCB_Natures.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CCB_Natures.FormattingEnabled = true;
-            this.CCB_Natures.IntegralHeight = false;
-            this.CCB_Natures.Location = new System.Drawing.Point(187, 198);
-            this.CCB_Natures.Name = "CCB_Natures";
-            this.CCB_Natures.Size = new System.Drawing.Size(123, 21);
-            this.CCB_Natures.TabIndex = 27;
-            this.CCB_Natures.ValueSeparator = ", ";
             // 
             // Form1
             // 
@@ -1240,8 +1215,6 @@
         private System.Windows.Forms.CheckBox CHK_IV_Atk;
         private System.Windows.Forms.CheckBox CHK_IV_HP;
         private System.Windows.Forms.CheckBox CHK_Egg;
-        private System.Windows.Forms.TextBox TB_File3;
-        private System.Windows.Forms.Button B_File3;
         private System.Windows.Forms.Label L_IVsMiss;
         private System.Windows.Forms.CheckBox CHK_IVsAny;
         private System.Windows.Forms.RadioButton RAD_Male;

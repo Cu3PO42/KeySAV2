@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 
 namespace KeySAV2
@@ -89,6 +90,13 @@ namespace KeySAV2
         public static string CleanFileName(string fileName)
         {
             return Path.GetInvalidFileNameChars().Aggregate(fileName, (current, c) => current.Replace(c.ToString(), string.Empty));
+        }
+
+        public static void Switch<T>(ref T one, ref T two)
+        {
+            T tmp = one;
+            one = two;
+            two = tmp;
         }
     }
 }

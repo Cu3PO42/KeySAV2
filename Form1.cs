@@ -99,7 +99,6 @@ namespace KeySAV2
         // Breaking Usage
         public string file1 = "";
         public string file2 = "";
-        public string file3 = "";
 
         // UI Usage
         private bool updateIVCheckboxes = true;
@@ -586,11 +585,6 @@ namespace KeySAV2
             LoadBreakBase(ref file2, TB_File2);
         }
 
-        private void loadBreak3(object sender, EventArgs e)
-        {
-            LoadBreakBase(ref file3, TB_File3);
-        }
-
         private void loadBreakFolder(object sender, EventArgs e)
         {
             FolderBrowserDialog folder = new FolderBrowserDialog();
@@ -605,7 +599,7 @@ namespace KeySAV2
         {
             B_Break.Enabled = false;
             if (TB_File1.Text != "" && TB_File2.Text != "")
-                if ((file1 == "SAV" && file2 == "SAV" && file3 == "SAV" && TB_File3.Text != "") || (file1 == "BV" && file2 == "BV"))
+                if ((file1 == "SAV" && file2 == "SAV") || (file1 == "BV" && file2 == "BV"))
                    B_Break.Enabled = true;
         }
 
@@ -651,7 +645,7 @@ namespace KeySAV2
         {
             string result;
             byte[] pkx;
-            SaveKey? key = SaveBreaker.Break(TB_File1.Text, TB_File2.Text, TB_File3.Text, out result, out pkx);
+            SaveKey? key = SaveBreaker.Break(TB_File1.Text, TB_File2.Text, out result, out pkx);
 
             MessageBox.Show(result);
 
