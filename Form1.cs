@@ -251,15 +251,18 @@ namespace KeySAV2
                 B_GoSAV.Enabled = CB_BoxEnd.Enabled = CB_BoxStart.Enabled = B_BKP_SAV.Visible = true;
                 L_KeySAV.Text = "Key: " + saveReader.KeyName;
                 saveReader.scanSlots();
+                L_SAVStats.Text = "" + saveReader.UnlockedSlots + "/930";
             }
             catch (Exceptions.NoSaveException)
             {
                 MessageBox.Show("Incorrect File Size");
                 B_GoSAV.Enabled = CB_BoxEnd.Enabled = CB_BoxStart.Enabled = B_BKP_SAV.Visible = false;
+                L_KeySAV.Text = L_SAVStats.Text = "";
             }
             catch (Exceptions.NoKeyException)
             {
                 L_KeySAV.Text = "Key not found. Please break for this SAV first.";
+                L_SAVStats.Text = "";
                 B_GoSAV.Enabled = false;
                 B_GoSAV.Enabled = CB_BoxEnd.Enabled = CB_BoxStart.Enabled = B_BKP_SAV.Visible = false;
             }

@@ -21,9 +21,9 @@ namespace KeySAV2.Structures
         byte[] dummy3;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 0x34AD0)]
         public byte[] boxKey1;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 232)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 0xE8)]
         public byte[] blank;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 930)]
+        [MarshalAs(UnmanagedType.ByValArray, ArraySubType = UnmanagedType.U1, SizeConst = 0x3A2)]
         public bool[] slotsUnlocked;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 0xAFA6)]
         byte[] dummy4;
@@ -86,8 +86,8 @@ namespace KeySAV2.Structures
             Array.Copy(BitConverter.GetBytes(chk), 0, blank, 0x6, 2);
             blank = PKX.encrypt(blank);
 
-            for (uint i = 0; i < 0x34AD0; i += 232)
-                slotsUnlocked[i] = Utility.Empty(boxKey1, i, 232);
+            for (uint i = 0; i < 930; ++i)
+                slotsUnlocked[i] = Utility.Empty(boxKey1, i*232, 232);
         }
     }
 }

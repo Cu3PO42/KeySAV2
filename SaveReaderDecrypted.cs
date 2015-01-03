@@ -11,11 +11,15 @@ namespace KeySAV2
 
         private readonly byte[] sav;
         private readonly uint offset;
-        private const string _KeyName = "Decrypted. No Key needed";
 
         public string KeyName
         {
-            get { return _KeyName; }
+            get { return "Decrypted. No Key needed"; }
+        }
+
+        public ushort UnlockedSlots
+        {
+            get { return 930;  }
         }
 
         internal SaveReaderDecrypted(byte[] file, string type)

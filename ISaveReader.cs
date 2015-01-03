@@ -9,6 +9,7 @@ namespace KeySAV2
     public interface ISaveReader
     {
         string KeyName { get;  }
+        ushort UnlockedSlots { get;  }
         void scanSlots(ushort from, ushort to);
         void scanSlots();
         void scanSlots(ushort pos);

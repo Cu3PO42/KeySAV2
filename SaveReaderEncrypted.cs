@@ -16,6 +16,18 @@ namespace KeySAV2
             get { return _KeyName; }
         }
 
+        public ushort UnlockedSlots
+        {
+            get
+            {
+                ushort res = 0;
+                foreach (bool val in key.slotsUnlocked)
+                    if (val)
+                        ++res;
+                return res;
+            }
+        }
+
         private readonly static byte[] zeros;
         private readonly static byte[] ezeros;
 
