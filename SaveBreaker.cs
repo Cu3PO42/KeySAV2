@@ -2,7 +2,6 @@
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Windows.Forms;
 using KeySAV2.Exceptions;
 using KeySAV2.Structures;
 
@@ -48,6 +47,9 @@ namespace KeySAV2
                 {
                     case 0x10009C:
                         fs.Seek(0x9C, SeekOrigin.Begin);
+                        goto case 0x100000;
+                    case 0x10019A:
+                        fs.Seek(0x19A, SeekOrigin.Begin);
                         goto case 0x100000;
                     case 0x100000:
                         input = new byte[0x100000];

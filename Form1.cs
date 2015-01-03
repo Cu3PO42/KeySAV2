@@ -58,7 +58,7 @@ namespace KeySAV2
             string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
             string path = files[0]; // open first D&D
             long len = new FileInfo(files[0]).Length;
-            if (len == 0x100000 || len == 0x10009C)
+            if (len == 0x100000 || len == 0x10009C || len == 0x10019A)
             {
                 tab_Main.SelectedIndex = 1;
                 openSAV(path);
@@ -559,7 +559,7 @@ namespace KeySAV2
             {
                 string path = boxsave.FileName;
                 FileInfo info = new FileInfo(path);
-                if ((info.Length == 0x10009C) || info.Length == 0x100000)
+                if (info.Length == 0x10009C || info.Length == 0x100000 || info.Length == 0x10019A)
                 {
                     textbox.Text = path;
                     file = "SAV";
