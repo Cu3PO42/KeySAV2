@@ -633,7 +633,7 @@
             // L_SAVStats
             // 
             this.L_SAVStats.AutoSize = true;
-            this.L_SAVStats.Location = new System.Drawing.Point(240, 53);
+            this.L_SAVStats.Location = new System.Drawing.Point(46, 53);
             this.L_SAVStats.Name = "L_SAVStats";
             this.L_SAVStats.Size = new System.Drawing.Size(0, 13);
             this.L_SAVStats.TabIndex = 25;

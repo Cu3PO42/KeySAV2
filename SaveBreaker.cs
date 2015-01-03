@@ -372,7 +372,9 @@ namespace KeySAV2
                 result = "Keystreams were successfully bruteforced!\n\n";
                 result += "Save your keystream now...";
                 respkx = pkx;
-                return SaveKey.Load(savkey);
+                SaveKey tmp = SaveKey.Load(savkey);
+                tmp.Upgrade();
+                return tmp;
             }
             else // Failed
                 result += "Keystreams were NOT bruteforced!\n\nStart over and try again :(";

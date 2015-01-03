@@ -72,8 +72,13 @@ namespace KeySAV2
 
         public static bool Empty(this byte[] array)
         {
-            foreach (byte e in array)
-                if (e != 0)
+            return array.All(e => e == 0);
+        }
+
+        public static bool Empty(byte[] array, uint offset, uint length)
+        {
+            for (uint i = offset; i < offset+length; ++i)
+                if (array[i] != 0)
                     return false;
             return true;
         }

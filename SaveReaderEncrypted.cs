@@ -8,7 +8,6 @@ namespace KeySAV2
     {
         private readonly byte[] sav;
         private readonly SaveKey key;
-        private readonly byte[] blank;
         private readonly byte activeSlot;
         private readonly string _KeyName;
 
@@ -25,9 +24,7 @@ namespace KeySAV2
             sav = file;
             ulong stamp = BitConverter.ToUInt64(sav, 0x10);
 
-            Tuple<SaveKey, byte[]> tmp = SaveKeyStore.GetKey(stamp, out _KeyName);
-            key = tmp.Item1;
-            blank = tmp.Item2;
+            key = SaveKeyStore.GetKey(stamp, out _KeyName);
 
             _KeyName = Path.GetFileName(_KeyName);
 
@@ -122,10 +119,10 @@ namespace KeySAV2
                     else
                     {
                         // Try xoring with the empty data.
-                        if (PKX.verifyCHK(PKX.decrypt(Utility.xor(ekx, blank))))
+                        if (PKX.verifyCHK(PKX.decrypt(Utility.xor(ekx, key.blank))))
                         {
-                            ekx = Utility.xor(ekx, blank);
-                            Utility.xor(blank, 0, sav, savOffset, key.boxKey2, keyOffset, 232);
+                            ekx = Utility.xor(ekx, key.blank);
+                            Utility.xor(key.blank, 0, sav, savOffset, key.boxKey2, keyOffset, 232);
                         }
                         else if (PKX.verifyCHK(PKX.decrypt(Utility.xor(ekx, ezeros))))
                         {
@@ -140,17 +137,17 @@ namespace KeySAV2
             {
                 // We've dumped data at least once.
                 if (Utility.SequenceEqual(key.boxKey1, keyOffset, sav, savOffset, 232) ||
-                    Utility.SequenceEqual(key.boxKey1, keyOffset, Utility.xor(blank, sav, savOffset), 0, 232) ||
+                    Utility.SequenceEqual(key.boxKey1, keyOffset, Utility.xor(key.blank, sav, savOffset), 0, 232) ||
                     Utility.SequenceEqual(key.boxKey1, keyOffset, Utility.xor(ezeros, sav, savOffset), 0, 232))
                 {
                     // Data is back to break state, but we can still dump with the other key.
                     ekx = Utility.xor(key.boxKey2, keyOffset, sav, savOffset, 232);
                     if (!PKX.verifyCHK(PKX.decrypt(ekx)))
                     {
-                        if (PKX.verifyCHK(PKX.decrypt(Utility.xor(ekx, blank))))
+                        if (PKX.verifyCHK(PKX.decrypt(Utility.xor(ekx, key.blank))))
                         {
-                            ekx = Utility.xor(ekx, blank);
-                            Utility.xor(blank, 0, key.boxKey2, keyOffset, key.boxKey2, keyOffset, 232);
+                            ekx = Utility.xor(ekx, key.blank);
+                            Utility.xor(key.blank, 0, key.boxKey2, keyOffset, key.boxKey2, keyOffset, 232);
                         }
                         else if (PKX.verifyCHK(PKX.decrypt(Utility.xor(ekx, ezeros))))
                         {
@@ -163,17 +160,17 @@ namespace KeySAV2
                     }
                 }
                 else if (Utility.SequenceEqual(key.boxKey2, keyOffset, sav, savOffset, 232) ||
-                    Utility.SequenceEqual(key.boxKey2, keyOffset, Utility.xor(blank, sav, savOffset), 0, 232) ||
+                    Utility.SequenceEqual(key.boxKey2, keyOffset, Utility.xor(key.blank, sav, savOffset), 0, 232) ||
                     Utility.SequenceEqual(key.boxKey2, keyOffset, Utility.xor(ezeros, sav, savOffset), 0, 232))
                 {
                     // Data is changed only once to a dumpable, but we can still dump with the other key.
                     ekx = Utility.xor(key.boxKey1, keyOffset, sav, savOffset, 232); 
                     if (!PKX.verifyCHK(PKX.decrypt(ekx)))
                     {
-                        if (PKX.verifyCHK(PKX.decrypt(Utility.xor(ekx, blank))))
+                        if (PKX.verifyCHK(PKX.decrypt(Utility.xor(ekx, key.blank))))
                         {
-                            ekx = Utility.xor(ekx, blank);
-                            Utility.xor(blank, 0, key.boxKey1, keyOffset, key.boxKey1, keyOffset, 232);
+                            ekx = Utility.xor(ekx, key.blank);
+                            Utility.xor(key.blank, 0, key.boxKey1, keyOffset, key.boxKey1, keyOffset, 232);
                         }
                         else if (PKX.verifyCHK(PKX.decrypt(Utility.xor(ekx, ezeros))))
                         {
@@ -198,14 +195,14 @@ namespace KeySAV2
                         ||
                         PKX.verifyCHK(PKX.decrypt(Utility.xor(data1, ezeros)))
                         ||
-                        PKX.verifyCHK(PKX.decrypt(Utility.xor(data1, blank)))
+                        PKX.verifyCHK(PKX.decrypt(Utility.xor(data1, key.blank)))
                         );
                     keydata2 = 
                         (PKX.verifyCHK(PKX.decrypt(data2))
                         ||
                         PKX.verifyCHK(PKX.decrypt(Utility.xor(data2, ezeros)))
                         ||
-                        PKX.verifyCHK(PKX.decrypt(Utility.xor(data2, blank)))
+                        PKX.verifyCHK(PKX.decrypt(Utility.xor(data2, key.blank)))
                         );
 
                     byte[] emptyKey, emptyKeyData;
@@ -239,18 +236,21 @@ namespace KeySAV2
                         ekx = emptyKeyData;
                         Array.Copy(emptyKey, emptyOffset, key.boxKey2, keyOffset, 232);
                         Array.Copy(zeros, 0, key.boxKey1, keyOffset, 232);
+                        key.slotsUnlocked[slot] = true;
                     }
                     else if (PKX.verifyCHK(PKX.decrypt(Utility.xor(emptyKeyData, ezeros))))
                     {
                         ekx = ezeros;
                         Utility.xor(ezeros, 0, emptyKey, emptyOffset, key.boxKey2, keyOffset, 232);
                         Array.Copy(zeros, 0, key.boxKey1, keyOffset, 232);
+                        key.slotsUnlocked[slot] = true;
                     }
-                    else if (PKX.verifyCHK(PKX.decrypt(Utility.xor(emptyKeyData, blank))))
+                    else if (PKX.verifyCHK(PKX.decrypt(Utility.xor(emptyKeyData, key.blank))))
                     {
                         ekx = ezeros;
-                        Utility.xor(blank, 0, emptyKey, emptyOffset, key.boxKey2, keyOffset, 232);
+                        Utility.xor(key.blank, 0, emptyKey, emptyOffset, key.boxKey2, keyOffset, 232);
                         Array.Copy(zeros, 0, key.boxKey1, keyOffset, 232);
+                        key.slotsUnlocked[slot] = true;
                     }
                 }
             }

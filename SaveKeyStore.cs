@@ -8,12 +8,12 @@ namespace KeySAV2
 {
     internal static class SaveKeyStore
     {
-        private static Dictionary<UInt64, Tuple<string, Lazy<Tuple<SaveKey, byte[]>>>> keys;
+        private static Dictionary<UInt64, Tuple<string, Lazy<SaveKey>>> keys;
         private static string path;
 
         static SaveKeyStore()
         {
-            keys = new Dictionary<UInt64, Tuple<string, Lazy<Tuple<SaveKey, byte[]>>>>();
+            keys = new Dictionary<ulong, Tuple<string, Lazy<SaveKey>>>();
             path = Path.Combine(System.Windows.Forms.Application.StartupPath, "data");
 
             ScanSaveDirectory();
@@ -40,7 +40,7 @@ namespace KeySAV2
             }
         }
 
-        internal static Tuple<SaveKey, byte[]> GetKey(ulong stamp, out string keyname)
+        internal static SaveKey GetKey(ulong stamp, out string keyname)
         {
             if (keys.ContainsKey(stamp))
             {
@@ -56,7 +56,7 @@ namespace KeySAV2
             foreach (var key in keys)
             {
                 if (key.Value.Item2.IsValueCreated)
-                    key.Value.Item2.Value.Item1.Save(key.Value.Item1);
+                    key.Value.Item2.Value.Save(key.Value.Item1);
             }
         }
 
@@ -80,16 +80,13 @@ namespace KeySAV2
 
         internal static void UpdateFile(string file, UInt64 stamp)
         {
-            keys[stamp] = new Tuple<string,Lazy<Tuple<SaveKey,byte[]>>>(file, new Lazy<Tuple<SaveKey,byte[]>>(() => {
-                SaveKey savkey = SaveKey.Load(file);
-                return new Tuple<SaveKey,byte[]>(savkey, savkey.Blank);
-            }));
+            keys[stamp] = new Tuple<string,Lazy<SaveKey>>(file, new Lazy<SaveKey>(() => SaveKey.Load(file)));
         }
 
         internal static void UpdateFile(string filename, SaveKey key)
         {
-            keys[key.stamp] = new Tuple<string, Lazy<Tuple<SaveKey, byte[]>>>(filename, new Lazy<Tuple<SaveKey, byte[]>>(
-                () => new Tuple<SaveKey, byte[]>(key, key.Blank)));
+            keys[key.stamp] = new Tuple<string, Lazy<SaveKey>>(filename, new Lazy<SaveKey>(
+                () => key));
         }
     }
 }

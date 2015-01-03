@@ -9,7 +9,8 @@ namespace KeySAV2.Structures
     public struct SaveKey
     {
         public UInt64 stamp;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 0x8)]
+        UInt32 magic;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 0x4)]
         byte[] dummy;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 0x4)]
         public byte[] location;
@@ -20,7 +21,11 @@ namespace KeySAV2.Structures
         byte[] dummy3;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 0x34AD0)]
         public byte[] boxKey1;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 0xB430)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 232)]
+        public byte[] blank;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 930)]
+        public bool[] slotsUnlocked;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 0xAFA6)]
         byte[] dummy4;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 0x34AD0)]
         public byte[] boxKey2;
@@ -46,6 +51,8 @@ namespace KeySAV2.Structures
             savkey = (SaveKey)Marshal.PtrToStructure(ptr, savkey.GetType());
             Marshal.FreeHGlobal(ptr);
 
+            savkey.Upgrade();
+
             return savkey;
         }
 
@@ -62,25 +69,25 @@ namespace KeySAV2.Structures
             File.WriteAllBytes(file, arr);
         }
 
-        public byte[] Blank
+        public void Upgrade()
         {
-            get
-            {
-                byte[] blank = new byte[232];
-                Array.Copy(location, 0, blank, 0xE0, 0x4);
-                byte[] nicknamebytes = Encoding.Unicode.GetBytes(SaveBreaker.eggnames[blank[0xE3] - 1]);
-                Array.Copy(nicknamebytes, 0, blank, 0x40, nicknamebytes.Length > 24 ? 24 : nicknamebytes.Length);
+            if (magic == 0x42454546)
+                return;
+            magic = 0x42454546;
+            blank = new byte[232];
+            Array.Copy(location, 0, blank, 0xE0, 0x4);
+            byte[] nicknamebytes = Encoding.Unicode.GetBytes(SaveBreaker.eggnames[blank[0xE3] - 1]);
+            Array.Copy(nicknamebytes, 0, blank, 0x40, nicknamebytes.Length > 24 ? 24 : nicknamebytes.Length);
 
-                uint chk = 0;
-                for (byte i = 8; i < 232; i += 2)
-                    chk += BitConverter.ToUInt16(blank, i);
+            uint chk = 0;
+            for (byte i = 8; i < 232; i += 2)
+                chk += BitConverter.ToUInt16(blank, i);
 
-                Array.Copy(BitConverter.GetBytes(chk), 0, blank, 0x6, 2);
-                blank = PKX.encrypt(blank);
-                Array.Resize(ref blank, 232);
+            Array.Copy(BitConverter.GetBytes(chk), 0, blank, 0x6, 2);
+            blank = PKX.encrypt(blank);
 
-                return blank;
-            }
+            for (uint i = 0; i < 0x34AD0; i += 232)
+                slotsUnlocked[i] = Utility.Empty(boxKey1, i, 232);
         }
     }
 }
