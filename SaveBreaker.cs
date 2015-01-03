@@ -105,7 +105,7 @@ namespace KeySAV2
             for (int d = 0; d < 2; d++)
             {
                 // Do this twice to get both box offsets.
-                for (int i = fo; i <= 0xB7400; i += 0x10A00) 
+                for (int i = fo; i <= 0xB8F30; i += 0x10A00) 
                 {
                     int err = 0;
                     // Start at findoffset and see if it matches pattern
