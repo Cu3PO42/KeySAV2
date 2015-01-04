@@ -79,6 +79,59 @@ namespace KeySAV2
 
             result = "";
 
+            if (!Utility.SequenceEqual(break1, 0x10, break2, 0x10, 8))
+            {
+                result = "Saves are not from the same game!\nPlease follow the instructions.";
+                respkx = new byte[232];
+                return null;
+            }
+
+            foreach (string file in Directory.GetFiles(SaveKeyStore.path, "*.bin", SearchOption.AllDirectories))
+            {
+                FileInfo info = new FileInfo(file);
+                if (info.Length == 0x80000)
+                {
+                    try
+                    {
+                        using (FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read))
+                        {
+                            byte[] oldstamp = new byte[8];
+                            fs.Read(oldstamp, 0, 8);
+                            if (Utility.SequenceEqual(oldstamp, 0, break1, 0x10, 8))
+                            {
+                                fs.Seek(0, SeekOrigin.Begin);
+                                fs.Read(savkey, 0, 0x80000);
+
+                                // Copy the key for the slot selector
+                                Array.Copy(Utility.SequenceEqual(break1, 0x80000, break2, 0x80000, 0x7F000) ? break2 : break1, 0x168, savkey, 0x80000, 4);
+
+                                // Copy the key for the other save slot
+                                Utility.xor(break1, BitConverter.ToUInt32(savkey, 0x1C), break1, (uint)(BitConverter.ToUInt32(savkey, 0x1C)-0x7F000), savkey, 0x80004, 232*30*31);
+
+                                result = "Found old key. Based new keystream on that.\n\nPlease save new Keystream.";
+
+                                SaveKey tmp = SaveKey.Load(savkey);
+                                tmp.Upgrade();
+
+                                SaveReaderEncrypted readerFile1, readerFile2;
+                                readerFile1 = new SaveReaderEncrypted(break1, tmp);
+                                readerFile1.scanSlots();
+                                readerFile2 = new SaveReaderEncrypted(break2, tmp);
+                                readerFile2.scanSlots();
+
+                                respkx = readerFile1.getPkx(0).Value.data;
+
+                                return tmp;
+                            }
+                        }
+                    }
+                    catch (IOException ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+                }
+            }
+
             if (Utility.SequenceEqual(break1, 0x80000, break2, 0x80000, 0x7F000))
             {
                 save1Save = break2;
@@ -256,7 +309,7 @@ namespace KeySAV2
                     Array.Resize(ref emptyekx, 232); // ensure it's 232 bytes.
 
                     // Copy over 0x10-0x1F (Save Encryption Unused Data so we can track data).
-                    Array.Copy(break1, 0x10, savkey, 0, 0x10);
+                    Array.Copy(break1, 0x10, savkey, 0, 0x8);
                     // Include empty data
                     savkey[0x10] = empty[0xE0]; savkey[0x11] = empty[0xE1]; savkey[0x12] = empty[0xE2]; savkey[0x13] = empty[0xE3];
                     // Copy over the scan offsets.

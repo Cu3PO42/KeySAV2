@@ -47,6 +47,23 @@ namespace KeySAV2
 
             sav.XorInPlace(key.boxOffset-0x7F000, key.slot1Key, 0, 232*30*31);
         }
+
+        internal SaveReaderEncrypted(byte[] file, SaveKey key)
+        {
+            sav = file;
+            ulong stamp = BitConverter.ToUInt64(sav, 0x10);
+
+            this.key = key;
+
+            _KeyName = "";
+
+            if (key.slot1Flag == BitConverter.ToInt32(sav, 0x168))
+                activeSlot = 0;
+            else
+                activeSlot = 1;
+
+            sav.XorInPlace(key.boxOffset-0x7F000, key.slot1Key, 0, 232*30*31);
+        }
         
         static SaveReaderEncrypted()
         {

@@ -9,7 +9,7 @@ namespace KeySAV2
     internal static class SaveKeyStore
     {
         private static Dictionary<UInt64, Tuple<string, Lazy<SaveKey>>> keys;
-        private static string path;
+        internal static string path;
 
         static SaveKeyStore()
         {
