@@ -389,6 +389,10 @@ namespace KeySAV2
                     if (CHK_Enable_Filtering.Checked && !((Func<bool>) (() =>
                     {
                         PKX pkx = slot.Value;
+
+                        if (CHK_ShinyOverride.Checked && pkx.isegg && CHK_Hatches_Shiny_For_Me.Checked && pkx.ESV == pkx.TSV)
+                            return true;
+
                         if (CHK_Egg.Checked && !pkx.isegg) return false;
 
                         if (CB_Abilities.Text != "" && CB_Abilities.SelectedIndex != 0 && CB_Abilities.Text != NameResourceManager.GetAbilities(oldLanguage)[pkx.ability])

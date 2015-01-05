@@ -46,6 +46,8 @@
             this.CB_Abilities = new System.Windows.Forms.ComboBox();
             this.L_Ability = new System.Windows.Forms.Label();
             this.L_Nature = new System.Windows.Forms.Label();
+            this.CCB_HPType = new CheckComboBox.CheckedComboBoxAll();
+            this.CCB_Natures = new CheckComboBox.CheckedComboBoxAll();
             this.RAD_GenderAny = new System.Windows.Forms.RadioButton();
             this.RAD_Female = new System.Windows.Forms.RadioButton();
             this.RAD_Male = new System.Windows.Forms.RadioButton();
@@ -106,8 +108,7 @@
             this.RTB_OPTIONS = new System.Windows.Forms.RichTextBox();
             this.CB_MainLanguage = new System.Windows.Forms.ComboBox();
             this.CB_Game = new System.Windows.Forms.ComboBox();
-            this.CCB_HPType = new CheckComboBox.CheckedComboBoxAll();
-            this.CCB_Natures = new CheckComboBox.CheckedComboBoxAll();
+            this.CHK_ShinyOverride = new System.Windows.Forms.CheckBox();
             this.tab_Main.SuspendLayout();
             this.Tab_BV.SuspendLayout();
             this.Tab_SAV.SuspendLayout();
@@ -266,6 +267,7 @@
             // 
             this.GB_Filter.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.GB_Filter.Controls.Add(this.CHK_ShinyOverride);
             this.GB_Filter.Controls.Add(this.CB_Species);
             this.GB_Filter.Controls.Add(this.label3);
             this.GB_Filter.Controls.Add(this.CB_Abilities);
@@ -351,6 +353,36 @@
             this.L_Nature.Size = new System.Drawing.Size(39, 13);
             this.L_Nature.TabIndex = 29;
             this.L_Nature.Text = "Nature";
+            // 
+            // CCB_HPType
+            // 
+            this.CCB_HPType.CheckOnClick = false;
+            this.CCB_HPType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.CCB_HPType.DropDownHeight = 1;
+            this.CCB_HPType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CCB_HPType.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.CCB_HPType.FormattingEnabled = true;
+            this.CCB_HPType.IntegralHeight = false;
+            this.CCB_HPType.Location = new System.Drawing.Point(187, 40);
+            this.CCB_HPType.Name = "CCB_HPType";
+            this.CCB_HPType.Size = new System.Drawing.Size(123, 21);
+            this.CCB_HPType.TabIndex = 28;
+            this.CCB_HPType.ValueSeparator = ", ";
+            // 
+            // CCB_Natures
+            // 
+            this.CCB_Natures.BackColor = System.Drawing.Color.White;
+            this.CCB_Natures.CheckOnClick = true;
+            this.CCB_Natures.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.CCB_Natures.DropDownHeight = 1;
+            this.CCB_Natures.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CCB_Natures.FormattingEnabled = true;
+            this.CCB_Natures.IntegralHeight = false;
+            this.CCB_Natures.Location = new System.Drawing.Point(187, 198);
+            this.CCB_Natures.Name = "CCB_Natures";
+            this.CCB_Natures.Size = new System.Drawing.Size(123, 21);
+            this.CCB_Natures.TabIndex = 27;
+            this.CCB_Natures.ValueSeparator = ", ";
             // 
             // RAD_GenderAny
             // 
@@ -717,7 +749,7 @@
             this.B_GoSAV.Name = "B_GoSAV";
             this.B_GoSAV.Size = new System.Drawing.Size(33, 23);
             this.B_GoSAV.TabIndex = 10;
-            this.B_GoSAV.Text = "Go";
+            this.B_GoSAV.Text = ":w";
             this.B_GoSAV.UseVisualStyleBackColor = true;
             this.B_GoSAV.Click += new System.EventHandler(this.DumpSAV);
             // 
@@ -1086,35 +1118,15 @@
             this.CB_Game.TabIndex = 2;
             this.CB_Game.SelectedIndexChanged += new System.EventHandler(this.changedetectgame);
             // 
-            // CCB_HPType
+            // CHK_ShinyOverride
             // 
-            this.CCB_HPType.CheckOnClick = false;
-            this.CCB_HPType.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.CCB_HPType.DropDownHeight = 1;
-            this.CCB_HPType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CCB_HPType.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.CCB_HPType.FormattingEnabled = true;
-            this.CCB_HPType.IntegralHeight = false;
-            this.CCB_HPType.Location = new System.Drawing.Point(187, 40);
-            this.CCB_HPType.Name = "CCB_HPType";
-            this.CCB_HPType.Size = new System.Drawing.Size(123, 21);
-            this.CCB_HPType.TabIndex = 28;
-            this.CCB_HPType.ValueSeparator = ", ";
-            // 
-            // CCB_Natures
-            // 
-            this.CCB_Natures.BackColor = System.Drawing.Color.White;
-            this.CCB_Natures.CheckOnClick = true;
-            this.CCB_Natures.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.CCB_Natures.DropDownHeight = 1;
-            this.CCB_Natures.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CCB_Natures.FormattingEnabled = true;
-            this.CCB_Natures.IntegralHeight = false;
-            this.CCB_Natures.Location = new System.Drawing.Point(187, 198);
-            this.CCB_Natures.Name = "CCB_Natures";
-            this.CCB_Natures.Size = new System.Drawing.Size(123, 21);
-            this.CCB_Natures.TabIndex = 27;
-            this.CCB_Natures.ValueSeparator = ", ";
+            this.CHK_ShinyOverride.AutoSize = true;
+            this.CHK_ShinyOverride.Location = new System.Drawing.Point(209, 147);
+            this.CHK_ShinyOverride.Name = "CHK_ShinyOverride";
+            this.CHK_ShinyOverride.Size = new System.Drawing.Size(93, 17);
+            this.CHK_ShinyOverride.TabIndex = 34;
+            this.CHK_ShinyOverride.Text = "Shiny override";
+            this.CHK_ShinyOverride.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -1227,6 +1239,7 @@
         private System.Windows.Forms.Label L_Ability;
         private System.Windows.Forms.ComboBox CB_Species;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.CheckBox CHK_ShinyOverride;
     }
 }
 
