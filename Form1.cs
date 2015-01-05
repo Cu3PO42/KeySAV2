@@ -390,7 +390,7 @@ namespace KeySAV2
                     {
                         PKX pkx = slot.Value;
 
-                        if (CHK_ShinyOverride.Checked && pkx.isegg && CHK_Hatches_Shiny_For_Me.Checked && pkx.ESV == pkx.TSV)
+                        if (CHK_ShinyOverride.Checked && pkx.isegg && pkx.ESV == pkx.TSV)
                             return true;
 
                         if (CHK_Egg.Checked && !pkx.isegg) return false;
@@ -548,7 +548,7 @@ namespace KeySAV2
             CHK_Hatches_Shiny_For.Enabled = TB_SVs.Enabled =
             CHK_Egg.Enabled = RAD_Male.Enabled = RAD_Female.Enabled =
             RAD_GenderAny.Enabled  = CCB_Natures.Enabled =
-            CB_Abilities.Enabled = CB_Species.Enabled =
+            CB_Abilities.Enabled = CB_Species.Enabled = CHK_ShinyOverride.Enabled = 
             CHK_Enable_Filtering.Checked;
         }
 
