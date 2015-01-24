@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using KeySAV2.Exceptions;
 using KeySAV2.Structures;
 
@@ -17,9 +18,9 @@ namespace KeySAV2
             eggnames = new string[] {"タマゴ", "Egg", "Œuf", "Uovo", "Ei", "", "Huevo", "알"};
         }
 
-        public static ISaveReader Load(string file)
+        public static async Task<ISaveReader> LoadAsync(string file)
         {
-            return LoadBase<ISaveReader>(file, (input => new SaveReaderEncrypted(input)),
+            return await LoadBaseAsync<ISaveReader>(file, (input => new SaveReaderEncrypted(input)),
                 (input =>
                 {
                     if (input.Length == 0x76000 && BitConverter.ToUInt32(input, 0x75E10) == Magic)
@@ -30,17 +31,22 @@ namespace KeySAV2
                 }));
         }
 
+        public static ISaveReader Load(string file)
+        {
+            return LoadAsync(file).Result;
+        }
+
         private static byte[] LoadRaw(string file)
         {
             return LoadBase(file, (x => x), (x => { throw new NoSaveException(); }));
         }
 
-        private static T LoadBase<T>(string file, Func<byte[], T> fn1, Func<byte[], T> fn2)
+        private static async Task<T> LoadBaseAsync<T>(string file, Func<byte[], T> fn1, Func<byte[], T> fn2)
         {
             FileInfo info = new FileInfo(file);
             if (info.Length != 0x100000 && info.Length != 0x10009C && info.Length != 0x65600 && info.Length != 0x76000)
                 throw new NoSaveException();
-            using (FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read))
+            using (FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read, FileShare.Read, 0x1000, true))
             {
                 byte[] input;
                 switch (info.Length)
@@ -53,14 +59,19 @@ namespace KeySAV2
                         goto case 0x100000;
                     case 0x100000:
                         input = new byte[0x100000];
-                        fs.Read(input, 0, 0x100000);
+                        await fs.ReadAsync(input, 0, 0x100000);
                         return fn1(input);
                     default:
                         input = new byte[info.Length];
-                        fs.Read(input, 0, (int)info.Length);
+                        await fs.ReadAsync(input, 0, (int)info.Length);
                         return fn2(input);
                 }
             }
+        }
+
+        private static T LoadBase<T>(string file, Func<byte[], T> fn1, Func<byte[], T> fn2)
+        {
+            return LoadBaseAsync(file, fn1, fn2).Result;
         }
 
         public static SaveKey? Break(string file1, string file2, out string result, out byte[] respkx)
@@ -435,6 +446,16 @@ namespace KeySAV2
                 result += "Keystreams were NOT bruteforced!\n\nStart over and try again :(";
             respkx = null;
             return null;
+        }
+
+        public static void ScanFolder(string folder)
+        {
+            Task<Task<ISaveReader>>[] readers = Utility.Interleaved(
+                from name in Directory.EnumerateFiles(folder) select LoadAsync(name));
+            foreach (Task<Task<ISaveReader>> bucket in readers)
+            {
+                bucket.Result.Result.scanSlots();
+            }
         }
     }
 }

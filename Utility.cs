@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace KeySAV2
 {
@@ -102,6 +104,32 @@ namespace KeySAV2
             T tmp = one;
             one = two;
             two = tmp;
+        }
+
+        // Copyright for public static Task<Task<T>>[] Interleaved<T>(IEnumerable<Task<T>> tasks) 2014 Microsoft Corporation
+        public static Task<Task<T>>[] Interleaved<T>(IEnumerable<Task<T>> tasks)
+        {
+            var inputTasks = tasks.ToList();
+
+            var buckets = new TaskCompletionSource<Task<T>>[inputTasks.Count];
+            var results = new Task<Task<T>>[buckets.Length];
+            for (int i = 0; i < buckets.Length; i++)
+            {
+                buckets[i] = new TaskCompletionSource<Task<T>>();
+                results[i] = buckets[i].Task;
+            }
+
+            int nextTaskIndex = -1;
+            Action<Task<T>> continuation = completed =>
+            {
+                var bucket = buckets[Interlocked.Increment(ref nextTaskIndex)];
+                bucket.TrySetResult(completed);
+            };
+
+            foreach (var inputTask in inputTasks)
+                inputTask.ContinueWith(continuation, CancellationToken.None, TaskContinuationOptions.ExecuteSynchronously, TaskScheduler.Default);
+
+            return results;
         }
     }
 }

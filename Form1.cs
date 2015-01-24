@@ -1030,15 +1030,7 @@ namespace KeySAV2
 
         private void B_BreakFolder_Click(object sender, EventArgs e)
         {
-            foreach (string path in Directory.GetFiles(TB_Folder.Text))
-            {
-                try
-                {
-                    SaveBreaker.Load(path).scanSlots();
-                }
-                catch { }
-            }
-            MessageBox.Show("Processed all files in folder...");
+            SaveBreaker.ScanFolder(TB_Folder.Text);
         }
 
         private void toggleIVAll(object sender, EventArgs e)

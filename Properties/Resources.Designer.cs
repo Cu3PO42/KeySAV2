@@ -104,7 +104,11 @@ namespace KeySAV2.Properties {
         ///Magmapanzer
         ///Aquahülle
         ///Magnetfalle
-        ///Lärms [rest of string was truncated]&quot;;.
+        ///Lärmschutz
+        ///Regengenuss
+        ///Sandsturm
+        ///Erzwinger
+        ///Speck [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Abilities_de {
             get {
@@ -156,7 +160,11 @@ namespace KeySAV2.Properties {
         ///Magma Armor
         ///Water Veil
         ///Magnet Pull
-        ///Soundpr [rest of string was truncated]&quot;;.
+        ///Soundproof
+        ///Rain Dish
+        ///Sand Stream
+        ///Pressure
+        ///Thick Fa [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Abilities_en {
             get {
@@ -206,7 +214,11 @@ namespace KeySAV2.Properties {
         ///Punto Tóxico
         ///Foco Interno
         ///Escudo Magma
-        ///Velo Ag [rest of string was truncated]&quot;;.
+        ///Velo Agua
+        ///Imán
+        ///Insonorizar
+        ///Cura Lluvia
+        ///Chorro Ar [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Abilities_es {
             get {
@@ -260,7 +272,11 @@ namespace KeySAV2.Properties {
         ///Magnépiège
         ///Anti-Bruit
         ///Cuvette
-        ///Sa [rest of string was truncated]&quot;;.
+        ///Sable Volant
+        ///Pression
+        ///Isograisse
+        ///Matinal
+        ///Corps  [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Abilities_fr {
             get {
@@ -312,7 +328,11 @@ namespace KeySAV2.Properties {
         ///Magmascudo
         ///Idrovelo
         ///Magnetismo
-        ///Antisuono [rest of string was truncated]&quot;;.
+        ///Antisuono
+        ///Copripioggia
+        ///Sabbiafiume
+        ///Pressione
+        ///Grassos [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Abilities_it {
             get {
@@ -396,7 +416,19 @@ namespace KeySAV2.Properties {
         ///やるき
         ///しろいけむり
         ///ヨガパワー
-        ///シェルア [rest of string was truncated]&quot;;.
+        ///シェルアーマー
+        ///エアロック
+        ///ちどりあし
+        ///でんきエンジン
+        ///とうそうしん
+        ///ふくつのこころ
+        ///ゆきがくれ
+        ///くいしんぼう
+        ///いかりのつぼ
+        ///かるわざ
+        ///たいねつ
+        ///たんじゅん
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Abilities_ja {
             get {
@@ -502,7 +534,29 @@ namespace KeySAV2.Properties {
         ///선파워
         ///속보
         ///노말스킨
-        ///스 [rest of string was truncated]&quot;;.
+        ///스나이퍼
+        ///매직가드
+        ///노가드
+        ///시간벌기
+        ///테크니션
+        ///리프가드
+        ///서투름
+        ///틀깨기
+        ///대운
+        ///유폭
+        ///위험예지
+        ///예지몽
+        ///천진
+        ///색안경
+        ///필터
+        ///슬로스타트
+        ///배짱
+        ///마중물
+        ///아이스바디
+        ///하드록
+        ///눈퍼뜨리기
+        ///꿀모으기
+        ///통찰 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Abilities_ko {
             get {
@@ -767,6 +821,202 @@ namespace KeySAV2.Properties {
         ///
         ///
         ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///eo
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///Normal
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///Pflanzen
+        ///Pflanzen
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///Wolken
+        ///Westliches Meer
+        ///Westliches Meer
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
         /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Forms_de {
@@ -991,6 +1241,215 @@ namespace KeySAV2.Properties {
         ///
         ///
         ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///Normal
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///Normal
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///Plant
+        ///Plant
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///Overcast 
+        ///West Sea
+        ///West Sea
         ///
         ///
         ///
@@ -1297,6 +1756,203 @@ namespace KeySAV2.Properties {
         ///
         ///
         ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///a de Cast
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///a Normal
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///Planta
+        ///Planta
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///a Encapotado
+        ///Mar Oeste
+        ///Mar Oeste
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
         /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Forms_es {
@@ -1562,6 +2218,192 @@ namespace KeySAV2.Properties {
         ///
         ///
         ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///e de Morphéo
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///e Normale
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///Plante
+        ///Plante
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///Temps Couvert
+        ///Mer Occident
+        ///Mer Occident
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
         /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Forms_fr {
@@ -1794,6 +2636,207 @@ namespace KeySAV2.Properties {
         ///
         ///
         ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///a Cast
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///a Normale
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///Pianta
+        ///Pianta
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///a Nuvola
+        ///Mare Ovest
+        ///Mare Ovest
         ///
         ///
         ///
@@ -2089,7 +3132,217 @@ namespace KeySAV2.Properties {
         ///
         ///
         ///
-        ///        /// [rest of string was truncated]&quot;;.
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///ポワルンのすがた
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///ノーマルフォルム
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///くさきのミノ
+        ///くさきのミノ
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///ネガフォルム
+        ///にしのうみ
+        ///にしのうみ
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Forms_ja {
             get {
@@ -2351,6 +3604,230 @@ namespace KeySAV2.Properties {
         ///
         ///
         ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///캐스퐁의 모습
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///노말폼
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///초목도롱
+        ///초목도롱
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///네거폼
+        ///서쪽바다
+        ///서쪽바다
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
+        ///
         /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Forms_ko {
@@ -2405,7 +3882,12 @@ namespace KeySAV2.Properties {
         ///Lavakeks
         ///Beerensaft
         ///Zauberasche
-        ///KP- [rest of string was truncated]&quot;;.
+        ///KP-Plus
+        ///Protein
+        ///Eisen
+        ///Carbon
+        ///Kalzium
+        ///Sonderbonbo [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Items_de {
             get {
@@ -2457,7 +3939,13 @@ namespace KeySAV2.Properties {
         ///Elixir
         ///Max Elixir
         ///Lava Cookie
-        ///Berry Jui [rest of string was truncated]&quot;;.
+        ///Berry Juice
+        ///Sacred Ash
+        ///HP Up
+        ///Protein
+        ///Iron
+        ///Carbos
+        ///Cal [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Items_en {
             get {
@@ -2507,7 +3995,10 @@ namespace KeySAV2.Properties {
         ///Éter
         ///Éter Máximo
         ///Elixir
-        ///Elixir Máximo [rest of string was truncated]&quot;;.
+        ///Elixir Máximo
+        ///Galleta Lava
+        ///Zumo de Baya
+        ///Ceniza Sagrada [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Items_es {
             get {
@@ -2560,7 +4051,12 @@ namespace KeySAV2.Properties {
         ///Max Élixir
         ///Lava Cookie
         ///Jus de Baie
-        ///Ce [rest of string was truncated]&quot;;.
+        ///Cendre Sacrée
+        ///PV Plus
+        ///Protéine
+        ///Fer
+        ///Carbone
+        ///Cal [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Items_fr {
             get {
@@ -2611,7 +4107,12 @@ namespace KeySAV2.Properties {
         ///Etere Max
         ///Elisir
         ///Elisir Max
-        ///Lavottino [rest of string was truncated]&quot;;.
+        ///Lavottino
+        ///Succodibacca
+        ///Ceneremagica
+        ///PS-Su
+        ///Proteina
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Items_it {
             get {
@@ -2679,7 +4180,14 @@ namespace KeySAV2.Properties {
         ///クリティカット
         ///プラスパワー
         ///ディフェンダー
-        ///スピーダ [rest of string was truncated]&quot;;.
+        ///スピーダー
+        ///ヨクアタール
+        ///スペシャルアップ
+        ///スペシャルガード
+        ///ピッピにんぎょう
+        ///エネコのシッポ
+        ///あおいビードロ
+        ///きいろビードロ [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Items_ja {
             get {
@@ -2767,7 +4275,24 @@ namespace KeySAV2.Properties {
         ///실버스프레이
         ///골드스프레이
         ///동굴탈출로프
-        ///벌레회피스프레 [rest of string was truncated]&quot;;.
+        ///벌레회피스프레이
+        ///태양의돌
+        ///달의돌
+        ///불꽃의돌
+        ///천둥의돌
+        ///물의돌
+        ///리프의돌
+        ///작은버섯
+        ///큰버섯
+        ///진주
+        ///큰진주
+        ///별의모래
+        ///별의조각
+        ///금구슬
+        ///하트비늘
+        ///달콤한꿀
+        ///무럭무럭비료
+        ///축축 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Items_ko {
             get {
@@ -2822,7 +4347,12 @@ namespace KeySAV2.Properties {
         ///Silberblick
         ///Biss
         ///Heuler
-        ///Brü [rest of string was truncated]&quot;;.
+        ///Brüller
+        ///Gesang
+        ///Superschall
+        ///Ultraschall
+        ///Aussetzer
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Moves_de {
             get {
@@ -2881,7 +4411,13 @@ namespace KeySAV2.Properties {
         ///Sing
         ///Supersonic
         ///Sonic Boom
-        /// [rest of string was truncated]&quot;;.
+        ///Disable
+        ///Acid
+        ///Ember
+        ///Flamethrower
+        ///Mist
+        ///Water Gun
+        ///Hyd [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Moves_en {
             get {
@@ -2934,7 +4470,12 @@ namespace KeySAV2.Properties {
         ///Doble Ataque
         ///Pin Misil
         ///Malicioso
-        ///Mordi [rest of string was truncated]&quot;;.
+        ///Mordisco
+        ///Gruñido
+        ///Rugido
+        ///Canto
+        ///Supersónico
+        ///Bomba S [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Moves_es {
             get {
@@ -2988,7 +4529,12 @@ namespace KeySAV2.Properties {
         ///Dard-Nuée
         ///Groz’Yeux
         ///Morsure
-        ///Rugissemen [rest of string was truncated]&quot;;.
+        ///Rugissement
+        ///Hurlement
+        ///Berceuse
+        ///Ultrason
+        ///Sonicboom
+        ///Entra [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Moves_fr {
             get {
@@ -3042,7 +4588,13 @@ namespace KeySAV2.Properties {
         ///Missilspillo
         ///Fulmisguardo
         ///Morso
-        ///Ruggito [rest of string was truncated]&quot;;.
+        ///Ruggito
+        ///Boato
+        ///Canto
+        ///Supersuono
+        ///Sonicboom
+        ///Inibitore
+        ///A [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Moves_it {
             get {
@@ -3121,7 +4673,17 @@ namespace KeySAV2.Properties {
         ///けたぐり
         ///カウンター
         ///ちきゅうなげ
-        /// [rest of string was truncated]&quot;;.
+        ///かいりき
+        ///すいとる
+        ///メガドレイン
+        ///やどりぎのタネ
+        ///せいちょう
+        ///はっぱカッター
+        ///ソーラービーム
+        ///どくのこな
+        ///しびれごな
+        ///ねむりごな
+        ///はなびらの [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Moves_ja {
             get {
@@ -3218,7 +4780,25 @@ namespace KeySAV2.Properties {
         ///10만볼트
         ///전기자석파
         ///번개
-        /// [rest of string was truncated]&quot;;.
+        ///돌떨구기
+        ///지진
+        ///땅가르기
+        ///구멍파기
+        ///맹독
+        ///염동력
+        ///사이코키네시스
+        ///최면술
+        ///요가포즈
+        ///고속이동
+        ///전광석화
+        ///분노
+        ///순간이동
+        ///나이트헤드
+        ///흉내내기
+        ///싫은소리
+        ///그림자분신
+        ///HP회복
+        ///단 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Moves_ko {
             get {
@@ -3517,7 +5097,15 @@ namespace KeySAV2.Properties {
         ///Menki
         ///Rasaff
         ///Fukano
-        ///Arka [rest of string was truncated]&quot;;.
+        ///Arkani
+        ///Quapsel
+        ///Quaputzi
+        ///Quappo
+        ///Abra
+        ///Kadabra
+        ///Simsala
+        ///Machollo
+        ///Ma [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Species_de {
             get {
@@ -3580,7 +5168,13 @@ namespace KeySAV2.Properties {
         ///Dugtrio
         ///Meowth
         ///Persian
-        /// [rest of string was truncated]&quot;;.
+        ///Psyduck
+        ///Golduck
+        ///Mankey
+        ///Primeape
+        ///Growlithe
+        ///Arcanine
+        ///Pol [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Species_en {
             get {
@@ -3642,7 +5236,14 @@ namespace KeySAV2.Properties {
         ///Diglett
         ///Dugtrio
         ///Meowth
-        ///Persian [rest of string was truncated]&quot;;.
+        ///Persian
+        ///Psyduck
+        ///Golduck
+        ///Mankey
+        ///Primeape
+        ///Growlithe
+        ///Arcanine
+        ///P [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Species_es {
             get {
@@ -3701,7 +5302,13 @@ namespace KeySAV2.Properties {
         ///Parasect
         ///Mimitoss
         ///Aéromite
-        ///Taupiqu [rest of string was truncated]&quot;;.
+        ///Taupiqueur
+        ///Triopikeur
+        ///Miaouss
+        ///Persian
+        ///Psykokwak
+        ///Akwakwak
+        /// [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Species_fr {
             get {
@@ -3763,7 +5370,14 @@ namespace KeySAV2.Properties {
         ///Diglett
         ///Dugtrio
         ///Meowth
-        ///Persian        /// [rest of string was truncated]&quot;;.
+        ///Persian
+        ///Psyduck
+        ///Golduck
+        ///Mankey
+        ///Primeape
+        ///Growlithe
+        ///Arcanine
+        ///Po [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Species_it {
             get {
@@ -3851,7 +5465,22 @@ namespace KeySAV2.Properties {
         ///ゴローニャ
         ///ポニータ
         ///ギャロップ
-        ///ヤ [rest of string was truncated]&quot;;.
+        ///ヤドン
+        ///ヤドラン
+        ///コイル
+        ///レアコイル
+        ///カモネギ
+        ///ドードー
+        ///ドードリオ
+        ///パウワウ
+        ///ジュゴン
+        ///ベトベター
+        ///ベトベトン
+        ///シェルダー
+        ///パルシェン
+        ///ゴース
+        ///ゴースト
+        ///ゲン [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Species_ja {
             get {
@@ -3962,7 +5591,33 @@ namespace KeySAV2.Properties {
         ///킹크랩
         ///찌리리공
         ///붐볼
-        ///아라리        /// [rest of string was truncated]&quot;;.
+        ///아라리
+        ///나시
+        ///탕구리
+        ///텅구리
+        ///시라소몬
+        ///홍수몬
+        ///내루미
+        ///또가스
+        ///또도가스
+        ///뿔카노
+        ///코뿌리
+        ///럭키
+        ///덩쿠리
+        ///캥카
+        ///쏘드라
+        ///시드라
+        ///콘치
+        ///왕콘치
+        ///별가사리
+        ///아쿠스타
+        ///마임맨
+        ///스라크
+        ///루주라
+        ///에레브
+        ///마그마
+        ///쁘사이저
+        ///켄 [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string text_Species_ko {
             get {

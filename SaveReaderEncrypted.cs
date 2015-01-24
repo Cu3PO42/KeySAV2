@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using KeySAV2.Structures;
+using System.Threading.Tasks;
 
 namespace KeySAV2
 {
@@ -70,17 +71,11 @@ namespace KeySAV2
             zeros = new Byte[232];
             ezeros = PKX.encrypt(zeros);
             Array.Resize(ref ezeros, 0xE8);
-
         }
 
         public void scanSlots()
         {
-            bool ghost;
-            for(ushort i = 0; i < 30*31; ++i)
-            {
-                getPkxRaw(i, 0, out ghost);
-                getPkxRaw(i, 1, out ghost);
-            }
+            Parallel.For(0, 30 * 31, i => scanSlots((ushort)i));
         }
 
         public void scanSlots(ushort pos)
@@ -92,12 +87,7 @@ namespace KeySAV2
 
         public void scanSlots(ushort start, ushort end)
         {
-            for (ushort i = start; i <= end; ++i)
-            {
-                bool ghost;
-                getPkxRaw(i, 0, out ghost);
-                getPkxRaw(i, 1, out ghost);
-            }
+            Parallel.For(start, end+1, i => scanSlots((ushort)i));
         }
 
         public PKX? getPkx(ushort pos)
