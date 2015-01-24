@@ -126,6 +126,7 @@ namespace KeySAV2
                 // Key2 is confirmed to dump the data.
                 ekx = Utility.xor(key.boxKey2, keyOffset, sav, savOffset, 232);
                 ghost = false;
+                key.slotsUnlocked[slot] = true;
             }
             else if (zeros.SequenceEqual(key.boxKey2, keyOffset))
             {
@@ -215,6 +216,7 @@ namespace KeySAV2
                     // Either Key1 or Key2 or Save is empty. Whichever one decrypts properly is the empty data.
                     // Oh boy... here we go...
                     ghost = false;
+                    key.slotsUnlocked[slot] = true;
                     bool keydata1, keydata2 = false;
                     byte[] data1 = Utility.xor(sav, savOffset, key.boxKey1, keyOffset, 232);
                     byte[] data2 = Utility.xor(sav, savOffset, key.boxKey2, keyOffset, 232);
@@ -265,21 +267,18 @@ namespace KeySAV2
                         ekx = emptyKeyData;
                         Array.Copy(emptyKey, emptyOffset, key.boxKey2, keyOffset, 232);
                         Array.Copy(zeros, 0, key.boxKey1, keyOffset, 232);
-                        key.slotsUnlocked[slot] = true;
                     }
                     else if (PKX.verifyCHK(PKX.decrypt(Utility.xor(emptyKeyData, ezeros))))
                     {
                         ekx = ezeros;
                         Utility.xor(ezeros, 0, emptyKey, emptyOffset, key.boxKey2, keyOffset, 232);
                         Array.Copy(zeros, 0, key.boxKey1, keyOffset, 232);
-                        key.slotsUnlocked[slot] = true;
                     }
                     else if (PKX.verifyCHK(PKX.decrypt(Utility.xor(emptyKeyData, key.blank))))
                     {
                         ekx = ezeros;
                         Utility.xor(key.blank, 0, emptyKey, emptyOffset, key.boxKey2, keyOffset, 232);
                         Array.Copy(zeros, 0, key.boxKey1, keyOffset, 232);
-                        key.slotsUnlocked[slot] = true;
                     }
                 }
             }

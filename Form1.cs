@@ -475,6 +475,8 @@ namespace KeySAV2
 
         private void SavePKX(PKX pkx)
         {
+            if (pkx.isghost)
+                return;
             string isshiny = "";
             string nicknamestr = pkx.nicknamestr;
             if (pkx.isshiny)
