@@ -25,7 +25,22 @@ namespace KeySAV2
         internal SaveReaderDecrypted(byte[] file, string type)
         {
             sav = file;
-            offset = type == "XY" ? xyOffset : orasOffset;
+            switch (type)
+            {
+                case "XY":
+                    offset = xyOffset;
+                    break;
+                case "ORAS":
+                    offset = orasOffset;
+                    break;
+                case "RAW":
+                    offset = 4;
+                    byte[] ekx = new byte[232];
+                    Array.Copy(sav, 4, ekx, 0, 232);
+                    if (!PKX.verifyCHK(PKX.decrypt(ekx)))
+                        offset = 8;
+                    break;
+            }
         }
 
         public void scanSlots() {}

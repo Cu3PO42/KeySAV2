@@ -26,6 +26,8 @@ namespace KeySAV2
                         return new SaveReaderDecrypted(input, "ORAS");
                     if (input.Length == 0x65600 && BitConverter.ToUInt32(input, 0x65410) == Magic)
                         return new SaveReaderDecrypted(input, "XY");
+                    if (input.Length == 232 * 30 * 32)
+                        return new SaveReaderDecrypted(input, "RAW");
                     throw new NoSaveException();
                 }));
         }
@@ -38,7 +40,7 @@ namespace KeySAV2
         private static T LoadBase<T>(string file, Func<byte[], T> fn1, Func<byte[], T> fn2)
         {
             FileInfo info = new FileInfo(file);
-            if (info.Length != 0x100000 && info.Length != 0x10009C && info.Length != 0x65600 && info.Length != 0x76000)
+            if (info.Length != 0x100000 && info.Length != 0x10009C && info.Length != 0x65600 && info.Length != 0x76000 && info.Length != 232*30*32)
                 throw new NoSaveException();
             using (FileStream fs = new FileStream(file, FileMode.Open, FileAccess.Read))
             {
